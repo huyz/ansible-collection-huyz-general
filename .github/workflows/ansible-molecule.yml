@@ -21,6 +21,9 @@ jobs:
     outputs:
       needs_run: ${{ steps.check-event.outputs.changed_all == 'true' || steps.changes.outputs.ansible == 'true' }}
     steps:
+      # NOTE: code needs to be checked out to even get at .github/paths-filter.yml
+      - uses: actions/checkout@v3
+
       # TODO: is there an easier way to do this?
       - name: Determine if we apply to all files
         id: check-event
@@ -53,10 +56,6 @@ jobs:
           - add_to_config_file
 
     steps:
-      # XXX Apparently, "For pull requests it's not necessary to checkout the code"
-      - uses: actions/checkout@v3
-        if: github.event_name != 'pull_request'
-
       - name: Install poetry
         run: pipx install poetry
 
