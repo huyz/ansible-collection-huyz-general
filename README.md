@@ -6,9 +6,15 @@
 
 This Ansible collection contains roles for general use.
 
-Look at the individual roles' READMEs for details:
+## Usage
+
+Roles:
 
 - `huyz.general.add_to_config_file` ([README](https://github.com/huyz/ansible-collection-huyz-general/blob/master/roles/add_to_config_file/README.md))
+    - Function: Safely insert a block into one or more shell config files
+    - Use case: Mainly intended to be re-used by other roles
+
+---
 
 ## Development (of this repo)
 
@@ -20,7 +26,7 @@ Look at the individual roles' READMEs for details:
     direnv allow
     ```
 
-### Changelog
+### How to update the Changelog
 
 #### First time setup
 
@@ -52,15 +58,15 @@ Generate the changelog for the release:
 antsibull-changelog release --refresh-fragments --update-existing
 ```
 
-### Lint
+### How to lint
 
-Stage your changes
+First, stage your changes, then:
 
 ```shell
 pre-commit run -v
 ```
 
-## GitHub Actions
+### Overview of GitHub Actions
 
 - `lint.yml`
     - Triggered by: push to master and pull requests; weekly
@@ -71,6 +77,8 @@ pre-commit run -v
 - `release.yml`
     - Triggered by new tags
     - Builds collection and releases to Ansible Galaxy
+
+---
 
 ## License
 
