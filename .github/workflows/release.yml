@@ -11,7 +11,7 @@ env:
 
 defaults:
   run:
-    working-directory: ${{ env.WORKING_DIR }}
+    working-directory: ansible_collections/huyz/general
 
 jobs:
 
@@ -44,6 +44,6 @@ jobs:
       - name: Build collection and publish to Galaxy
         uses: artis3n/ansible_galaxy_collection@v2
         with:
-          collection_dir: ${{ env.WORKING_DIR }}}
+          collection_dir: ${{ env.WORKING_DIR }}
           api_key: ${{ secrets.ANSIBLE_GALAXY_API_KEY }}
           galaxy_version: ${{ env.RELEASE_VERSION }}
