@@ -4,6 +4,7 @@ name: Release
   push:
     tags:
       - '*'
+  workflow_dispatch:
 
 defaults:
   run:
@@ -14,7 +15,6 @@ jobs:
   release:
     runs-on: ubuntu-latest
     env:
-      ANSIBLE_GALAXY_API_KEY: ${{ secrets.ANSIBLE_GALAXY_API_KEY }}
       ANSIBLE_FORCE_COLOR: '1'
 
     steps:
