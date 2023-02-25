@@ -32,12 +32,18 @@ jobs:
       - uses: actions/checkout@v3
         if: github.event_name != 'pull_request'
 
+      - name: Install poetry
+        run: pipx install poetry
+
       - name: Set up Python 3.x
         id: setup-python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11.1'   # avoid warning in logs
           cache: 'poetry'
+
+      - name: Poetry install packages
+        run: poetry install
 
       - name: Check for changes in relevant files
         id: changes
