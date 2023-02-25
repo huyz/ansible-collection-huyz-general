@@ -40,7 +40,9 @@ jobs:
         id: setup-python
         uses: actions/setup-python@v4
         with:
+          python-version: '3.11.1'   # avoid warning in logs
           cache: 'pip'
+          cache-dependency-path: .pre-commit-config.yaml
 
       - name: Check for changes in relevant files
         id: changes
