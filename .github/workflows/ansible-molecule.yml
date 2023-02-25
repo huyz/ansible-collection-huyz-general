@@ -87,8 +87,8 @@ jobs:
 
       - name: Run Ansible Molecule
         id: molecule
-        uses: gofrolist/molecule-action@v2
-        with:
-          molecule_working_dir: roles/${{ matrix.role }}
         env:
           MOL_IMAGE: ${{ matrix.image }}
+        run: >
+          cd roles/${{ matrix.role }} &&
+          poetry run molecule test
