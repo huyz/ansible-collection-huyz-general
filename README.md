@@ -6,9 +6,9 @@
 
 This Ansible collection contains roles for general use.
 
-Look at the individual role's README for details:
+Look at the individual roles' READMEs for details:
 
-- `huyz.general.add_to_config_file` ([documentation](https://github.com/huyz/ansible-collection-huyz-general/blob/master/roles/add_to_config_file/README.md))
+- `huyz.general.add_to_config_file` ([README](https://github.com/huyz/ansible-collection-huyz-general/blob/master/roles/add_to_config_file/README.md))
 
 ## Development (of this repo)
 
@@ -20,7 +20,7 @@ Look at the individual role's README for details:
     direnv allow
     ```
 
-### Changelog9
+### Changelog
 
 #### First time setup
 
@@ -65,6 +65,9 @@ pre-commit run -v
 - `lint.yml`
     - Triggered by push to master and pull requests
     - Runs pre-commit
+- `ansible-molecule.yml`
+    - Triggered by push to master and pull requests
+    - Runs Ansible Molecule on all the roles defined by the collection
 - `release.yml`
     - Triggered by new tags
     - Builds collection and releases to Ansible Galaxy

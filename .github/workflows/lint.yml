@@ -18,7 +18,7 @@ jobs:
 
     steps:
       # XXX Apparently, "For pull requests it's not necessary to checkout the code"
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
         if: github.event_name != 'pull_request'
 
 #      - name: Install dependency manager

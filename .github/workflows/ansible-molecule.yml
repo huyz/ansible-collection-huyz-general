@@ -1,5 +1,5 @@
 ---
-name: Lint
+name: Ansible Molecule
 
 on:
   push:
@@ -13,21 +13,21 @@ env:
   ANSIBLE_FORCE_COLOR: '1'
 
 jobs:
-  lint:
+  ansible-molecule:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        scenario:
-          #- centos-8
-          #- debian-10
-          #- fedora-34
-          #- oraclelinux-8
-          - ubuntu-22.04
+        image:
+          #- centos:8
+          #- debian:10
+          #- fedora:34
+          #- oraclelinux:8
+          - ubuntu:22.04
 
     steps:
       # XXX Apparently, "For pull requests it's not necessary to checkout the code"
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
         if: github.event_name != 'pull_request'
 
       - name: Set up Python 3.x
@@ -48,3 +48,5 @@ jobs:
         uses: gofrolist/molecule-action@v2
         with:
           molecule_working_dir: roles/add_to_config_file
+        env:
+          MOL_IMAGE: ${{ matrix.image }}
