@@ -63,10 +63,10 @@ pre-commit run -v
 ## GitHub Actions
 
 - `lint.yml`
-    - Triggered by push to master and pull requests
+    - Triggered by: push to master and pull requests; weekly
     - Runs pre-commit
 - `ansible-molecule.yml`
-    - Triggered by push to master and pull requests
+    - Triggered by: push to master and pull requests; weekly
     - Runs Ansible Molecule on all the roles defined by the collection
 - `release.yml`
     - Triggered by new tags
@@ -80,5 +80,5 @@ MIT
 [link-license]: https://github.com/huyz/ansible-collection-huyz-general/blob/master/LICENSE
 [badge-collection]: https://img.shields.io/badge/collection-huyz.general-blue
 [link-galaxy]: https://galaxy.ansible.com/huyz/general
-[badge-gh-actions]: https://github.com/huyz/ansible-collection-huyz-general/workflows/CI/badge.svg?event=push
-[link-gh-actions]: https://github.com/huyz/ansible-collection-huyz-general/actions?query=workflow%3ACI
+[badge-gh-actions]: https://github.com/huyz/ansible-collection-huyz-general/actions/workflows/ansible-molecule.yml/badge.svg?event=push
+[link-gh-actions]: https://github.com/huyz/ansible-collection-huyz-general/actions/workflows/ansible-molecule.yml

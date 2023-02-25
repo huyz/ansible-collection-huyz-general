@@ -8,6 +8,7 @@ on:
   pull_request:
   schedule:
     - cron: "10 10 * * SUN"
+  workflow_dispatch:
 
 
 env:
@@ -20,6 +21,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # TODO: is there an easier way to do this?
+      - name: Determine if we apply to all files
+        if: contains(fromJSON('["schedule", "workflow_dispatch"]'), github.event_name)
+        run: echo "changed_all=true" >> "$GITHUB_ENV"
+
       # XXX Apparently, "For pull requests it's not necessary to checkout the code"
       - uses: actions/checkout@v3
         if: github.event_name != 'pull_request'
@@ -49,12 +55,13 @@ jobs:
 
       - name: Check for changes in relevant files
         id: changes
+        if: env.changed_all != 'true'
         uses: dorny/paths-filter@v2
         with:
           filters: .github/paths-filter.yml
 
       - name: Set up pre-commit
-        if: steps.changes.outputs.all == 'true'
+        if: env.changed_all == 'true' || steps.changes.outputs.all == 'true'
         # TODO: how do we make the version of pre-commit match pyproject.toml
         run: |
           pip install pre-commit
@@ -62,7 +69,7 @@ jobs:
 
       - name: Get listing of changed Ansible files
         id: ansible-files
-        if: steps.changes.outputs.ansible == 'true'
+        if: env.changed_all != 'true' && steps.changes.outputs.ansible == 'true'
         uses: dorny/paths-filter@v2
         with:
           # Enable listing of files matching each filter.
@@ -77,8 +84,13 @@ jobs:
               - added|modified: galaxy.xml
               - added|modified: '{docs,meta,plugins,roles}/**'
 
+      - name: Run pre-commit on all ansible files
+        if: env.changed_all == 'true'
+        run: |
+          pre-commit run --all-files
+
       - name: Run pre-commit on changed ansible files
-        if: steps.changes.outputs.ansible == 'true'
+        if: env.changed_all != 'true' && steps.changes.outputs.ansible == 'true'
         run: |
           # Run pre-commit to lint and format check files that were changed (but not deleted) compared to master.
           # XXX: there is a very small chance that it'll expand to exceed Linux's limits
@@ -87,7 +99,7 @@ jobs:
 
       - name: Get listing of changed GitHub Action files
         id: action-files
-        if: steps.changes.outputs.github_actions == 'true'
+        if: env.changed_all != 'true' && steps.changes.outputs.github_actions == 'true'
         uses: dorny/paths-filter@v2
         with:
           # Enable listing of files matching each filter.
@@ -102,8 +114,13 @@ jobs:
               - added|modified: '.github/paths-filter.yml'
               - added|modified: '.github/workflows/**'
 
-      - name: Run pre-commit on changed GitHub Action files
-        if: steps.changes.outputs.github_actions == 'true'
+      - name: Run actionlint on all GitHub Action files
+        if: env.changed_all == 'true'
+        run: |
+          pre-commit run actionlint --all-files
+
+      - name: Run actionlint on changed GitHub Action files
+        if: env.changed_all != 'true' && steps.changes.outputs.github_actions == 'true'
         run: |
           # Run pre-commit to lint and format check files that were changed (but not deleted) compared to master.
           # XXX: there is a very small chance that it'll expand to exceed Linux's limits

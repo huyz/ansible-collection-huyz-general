@@ -8,6 +8,7 @@ on:
   pull_request:
   schedule:
     - cron: "10 10 * * SUN"
+  workflow_dispatch:
 
 env:
   # https://www.jeffgeerling.com/blog/2020/getting-colorized-output-molecule-and-ansible-on-github-actions-ci
@@ -15,7 +16,28 @@ env:
   ANSIBLE_FORCE_COLOR: '1'
 
 jobs:
+  check-needs-run:
+    runs-on: ubuntu-latest
+    outputs:
+      needs_run: ${{ steps.check-event.outputs.changed_all == 'true' || steps.changes.outputs.ansible == 'true' }}
+    steps:
+      # TODO: is there an easier way to do this?
+      - name: Determine if we apply to all files
+        id: check-event
+        if: contains(fromJSON('["schedule", "workflow_dispatch"]'), github.event_name)
+        run: echo "changed_all=true" >> "$GITHUB_OUTPUT"
+
+      - name: Check for changes in relevant files
+        id: changes
+        if: steps.check-event.outputs.changed_all != 'true'
+        uses: dorny/paths-filter@v2
+        with:
+          filters: .github/paths-filter.yml
+
   ansible-molecule:
+    needs: check-needs-run
+    if: needs.check-needs-run.outputs.needs_run
+
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -26,6 +48,9 @@ jobs:
           #- fedora:34
           #- oraclelinux:8
           - ubuntu:22.04
+
+        role:
+          - add_to_config_file
 
     steps:
       # XXX Apparently, "For pull requests it's not necessary to checkout the code"
@@ -45,17 +70,10 @@ jobs:
       - name: Poetry install packages
         run: poetry install
 
-      - name: Check for changes in relevant files
-        id: changes
-        uses: dorny/paths-filter@v2
-        with:
-          filters: .github/paths-filter.yml
-
-      - name: Run pre-commit on changed ansible files
+      - name: Run Ansible Molecule
         id: molecule
-        if: steps.changes.outputs.ansible == 'true'
         uses: gofrolist/molecule-action@v2
         with:
-          molecule_working_dir: roles/add_to_config_file
+          molecule_working_dir: roles/${{ matrix.role }}
         env:
           MOL_IMAGE: ${{ matrix.image }}
