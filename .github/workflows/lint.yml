@@ -38,7 +38,6 @@ jobs:
         with:
           python-version: '3.11.1'   # avoid warning in logs
           cache: 'poetry'
-          cache-dependency-path: .pre-commit-config.yaml
 
       - name: Install packages
         run: poetry install --no-interaction
