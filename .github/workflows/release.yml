@@ -6,9 +6,12 @@ name: Release
       - '*'
   workflow_dispatch:
 
+env:
+  WORKING_DIR: ansible_collections/huyz/general
+
 defaults:
   run:
-    working-directory: ansible_collections/huyz/general
+    working-directory: ${{ env.WORKING_DIR }}
 
 jobs:
 
@@ -21,7 +24,7 @@ jobs:
       - name: Check out the codebase.
         uses: actions/checkout@v3
         with:
-          path: ansible_collections/huyz/general
+          path: ${{ env.WORKING_DIR }}
 
       # If we ever wanted to build & release without using a third-party action
       # - name: Set up Python 3.
@@ -41,5 +44,6 @@ jobs:
       - name: Build collection and publish to Galaxy
         uses: artis3n/ansible_galaxy_collection@v2
         with:
-          api_key: '${{ secrets.ANSIBLE_GALAXY_API_KEY }}'
-          galaxy_version: '${{ env.RELEASE_VERSION }}'
+          collection_dir: ${{ env.WORKING_DIR }}}
+          api_key: ${{ secrets.ANSIBLE_GALAXY_API_KEY }}
+          galaxy_version: ${{ env.RELEASE_VERSION }}
