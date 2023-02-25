@@ -1,0 +1,84 @@
+---
+dependency:
+  name: galaxy
+
+driver:
+  # Docker doesn't work with systemd unless run privileged, which we're trying to avoid.
+  name: docker
+  # Podman fails often but inconsistently with "failed to resolve remote
+  # temporary directory from ansible-tmp-..."
+  #name: podman
+
+lint: |
+  set -e
+  yamllint -c ../../.yamllint .
+  ansible-lint -c ../../.ansible-lint .
+
+platforms:
+  - name: ${MOL_INSTANCE_NAME:-ansible-add_to_config_file}
+    #image: ${MOL_IMAGE:-ubuntu:22.04}
+    image: ${MOL_IMAGE:-python:3}
+    pre_build_image: true
+
+    # If systemd were to actually be tested, these would probably need to be set:
+    # (although this should already be the CMD in the images):
+    #command: ${MOL_DOCKER_COMMAND:-/lib/systemd/systemd}
+    #tmpfs:
+    #  - /run
+    #  - /run/lock
+    #  - /tmp
+    # TODO: For Docker, figure out how to run systemd unprivileged (seems to work
+    #   fine with podman but the podman driver has other problems)
+    #   Right now, I get:
+    #   Failed to mount cgroup at /sys/fs/cgroup/systemd: Operation not permitted
+    #   [!!!!!!] Failed to mount API filesystems.
+    #privileged: true
+
+
+provisioner:
+  name: ansible
+  inventory:
+    group_vars:
+      all:
+        # If not set, it seems to guess /usr/bin/python, which testinfra doesn't like
+        ansible_python_interpreter: /usr/bin/python3
+        config_files:
+          - ~/.bashrc  # automatically created by Ubuntu
+          - ~/.zshrc  # non-existent
+          - ~/empty_file
+          - ~/common_pyenv_init.zsh
+          - ~/unmarked_block.sh
+    #host_vars:
+    #  ${MOL_INSTANCE_NAME:-ansible-add_to_config_file}:
+    #    # Set this to `ansible` so that `root` isn't used.
+    #    # Our custom images have the `ansible` user.
+    #    ansible_user: ansible
+  env:
+    # So that we can see why the image isn't getting started
+    #MOLECULE_NO_LOG: false
+    ANSIBLE_VERBOSITY: 1
+    # XXX `ANSIBLE_DEBUG:true` triggers a testinfra JSON decoding error
+    #ANSIBLE_DEBUG: true
+  # Molecule creates its own ansible.cfg and this is the way to set our own options
+  config_options:
+    defaults:
+      # Pretty-print even JSON output
+      # https://docs.ansible.com/ansible/latest/collections/ansible/builtin/default_callback.html#parameter-pretty_results
+      #callback_format_pretty: true
+      # Don't display skipped hosts/tasks
+      # https://docs.ansible.com/ansible/latest/collections/ansible/builtin/default_callback.html#parameter-display_skipped_hosts
+      display_skipped_hosts: false
+      # Show file and line number on failure (same as with -vv)
+      # https://docs.ansible.com/ansible/latest/collections/ansible/builtin/default_callback.html#parameter-show_task_path_on_failure
+      show_task_path_on_failure: true
+      gathering: smart
+      fact_caching: jsonfile
+      fact_caching_connection: ~/.cache/ansible/facts
+      fact_caching_timeout: 86400
+    ssh_connection:
+      ssh_args: "-o ControlMaster=auto -o ControlPersist=60s -o ControlPath=/tmp/ansible-ssh-%%h-%%p-%%r"
+    module_defaults:
+      gather_subset: "!all"
+
+verifier:
+  name: testinfra

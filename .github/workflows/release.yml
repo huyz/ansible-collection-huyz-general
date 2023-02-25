@@ -1,0 +1,45 @@
+---
+name: Release
+'on':
+  push:
+    tags:
+      - '*'
+
+defaults:
+  run:
+    working-directory: ansible_collections/huyz/general
+
+jobs:
+
+  release:
+    runs-on: ubuntu-latest
+    env:
+      ANSIBLE_GALAXY_API_KEY: ${{ secrets.ANSIBLE_GALAXY_API_KEY }}
+      ANSIBLE_FORCE_COLOR: '1'
+
+    steps:
+      - name: Check out the codebase.
+        uses: actions/checkout@v4
+        with:
+          path: ansible_collections/huyz/general
+
+      # If we ever wanted to build & release without using a third-party action
+      # - name: Set up Python 3.
+      #   uses: actions/setup-python@v2
+      #   with:
+      #     python-version: '3.x'
+      #
+      # - name: Install Ansible.
+      #   run: pip3 install ansible-core
+      #
+      # - name: Release to Ansible Galaxy.
+      #   run: ansible-playbook -i 'localhost,' galaxy-deploy.yml -e "github_tag=${{ github.ref }}"
+
+      - name: Get the version name from the tags
+        run: echo "RELEASE_VERSION=${GITHUB_REF/refs\/tags\//}" >> "$GITHUB_ENV"
+
+      - name: Build collection and publish to Galaxy
+        uses: artis3n/ansible_galaxy_collection@v2
+        with:
+          api_key: '${{ secrets.ANSIBLE_GALAXY_API_KEY }}'
+          galaxy_version: '${{ env.RELEASE_VERSION }}'

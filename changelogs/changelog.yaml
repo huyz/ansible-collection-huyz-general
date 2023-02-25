@@ -1,0 +1,15 @@
+ancestor: null
+releases:
+  1.0.2:
+    changes:
+      major_changes:
+      - add_to_config_file - initial commit
+      release_summary: '| Release Date: 2023-02-25
+
+        | Initial release, containing the add_to_config_file role
+
+        '
+    fragments:
+    - 2023-02-25_add_to_config_file.yml
+    - 2023-02-25_v1.0.2_summary.yml
+    release_date: '2023-02-25'

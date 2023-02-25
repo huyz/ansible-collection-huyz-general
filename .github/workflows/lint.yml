@@ -1,0 +1,106 @@
+---
+name: Lint
+
+on:
+  push:
+    branches:
+        - master
+  pull_request:
+
+env:
+  # https://www.jeffgeerling.com/blog/2020/getting-colorized-output-molecule-and-ansible-on-github-actions-ci
+  PY_COLORS: '1'
+  ANSIBLE_FORCE_COLOR: '1'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      # XXX Apparently, "For pull requests it's not necessary to checkout the code"
+      - uses: actions/checkout@v4
+        if: github.event_name != 'pull_request'
+
+#      - name: Install dependency manager
+#        run: pipx install poetry
+#
+#      - name: Set up Python 3.x
+#        id: setup-python
+#        uses: actions/setup-python@v4
+#        with:
+#          cache: 'poetry'
+#
+#      - name: Install packages
+#        run: poetry install --no-interaction
+#
+#      - name: Lint
+#        run: make lint
+
+      - name: Set up Python 3.x
+        id: setup-python
+        uses: actions/setup-python@v4
+        with:
+          cache: 'pip'
+
+      - name: Check for changes in relevant files
+        id: changes
+        uses: dorny/paths-filter@v2
+        with:
+          filters: .github/paths-filter.yml
+
+      - name: Set up pre-commit
+        if: steps.changes.outputs.all == 'true'
+        # TODO: how do we make the version of pre-commit match pyproject.toml
+        run: |
+          pip install pre-commit
+          pre-commit install --install-hooks
+
+      - name: Get listing of changed Ansible files
+        id: ansible-files
+        if: steps.changes.outputs.ansible == 'true'
+        uses: dorny/paths-filter@v2
+        with:
+          # Enable listing of files matching each filter.
+          # Paths to files will be available in `${FILTER_NAME}_files` output variable.
+          # Paths will be escaped and space-delimited.
+          # Output is usable as command line argument list in linux shell
+          list-files: shell
+          # Skip linting deleted files
+          # TODO: how do avoid the redundancy with paths-filter.yml?
+          filters: |
+            all:
+              - added|modified: galaxy.xml
+              - added|modified: '{docs,meta,plugins,roles}/**'
+
+      - name: Run pre-commit on changed ansible files
+        if: steps.changes.outputs.ansible == 'true'
+        run: |
+          # Run pre-commit to lint and format check files that were changed (but not deleted) compared to master.
+          # XXX: there is a very small chance that it'll expand to exceed Linux's limits
+          #      `getconf ARG_MAX` - max # bytes of args + environ for exec()
+          pre-commit run --files ${{ steps.ansible-files.outputs.all_files }}
+
+      - name: Get listing of changed GitHub Action files
+        id: action-files
+        if: steps.changes.outputs.github_actions == 'true'
+        uses: dorny/paths-filter@v2
+        with:
+          # Enable listing of files matching each filter.
+          # Paths to files will be available in `${FILTER_NAME}_files` output variable.
+          # Paths will be escaped and space-delimited.
+          # Output is usable as command line argument list in linux shell
+          list-files: shell
+          # Skip linting deleted files
+          # TODO: how do avoid the redundancy with paths-filter.yml?
+          filters: |
+            all:
+              - added|modified: '.github/paths-filter.yml'
+              - added|modified: '.github/workflows/**'
+
+      - name: Run pre-commit on changed GitHub Action files
+        if: steps.changes.outputs.github_actions == 'true'
+        run: |
+          # Run pre-commit to lint and format check files that were changed (but not deleted) compared to master.
+          # XXX: there is a very small chance that it'll expand to exceed Linux's limits
+          #      `getconf ARG_MAX` - max # bytes of args + environ for exec()
+          pre-commit run actionlint --files ${{ steps.action-files.outputs.all_files }}

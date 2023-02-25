@@ -1,0 +1,69 @@
+---
+#files: ^roles/add_to_config_file/
+#exclude: .*/OFF/.*
+
+default_install_hook_types:
+  - pre-commit
+  - post-merge
+  - pre-merge-commit
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-ast
+      - id: check-case-conflict
+      - id: check-executables-have-shebangs
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-shebang-scripts-are-executable
+      - id: check-symlinks
+      - id: check-toml
+      - id: check-vcs-permalinks
+      - id: check-yaml
+      - id: debug-statements
+      - id: destroyed-symlinks
+      - id: detect-aws-credentials
+      - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+      - id: name-tests-test
+        args: [--pytest-test-first]
+      #- id: pretty-format-json
+      #  args: [--no-ensure-ascii, --no-sort-keys]
+      - id: trailing-whitespace
+
+
+  - repo: https://github.com/jumanjihouse/pre-commit-hooks
+    rev: 3.0.0
+    hooks:
+      - id: shellcheck
+        exclude: ^.*/files/.*$
+
+  - repo: https://github.com/hollow/pre-commit-actionlint
+    rev: v1.6.23
+    hooks:
+      - id: actionlint
+
+  # We cannot run ansible-lint in isolation because galaxy.yml uses manifest, which means
+  # we need the `distlib` pip dependency.
+  #- repo: https://github.com/ansible/ansible-lint
+  #  rev: v6.13.1
+  #  hooks:
+  #    - id: ansible-lint
+  #      files: \.(yaml|yml)$
+  #      args:
+  #        - '--profile=production'
+
+  - repo: local
+    hooks:
+      - name: ansible-lint
+        id: ansible-lint
+        language: system
+        entry: poetry run ansible-lint
+        files: \.(yaml|yml)$
+        args:
+          - '--profile=production'
+          # XXX Temp: 2023-02-25 https://github.com/ansible/ansible-lint/issues/3084
+          - '--skip-list=schema[galaxy]'

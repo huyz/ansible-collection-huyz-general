@@ -1,0 +1,19 @@
+---
+- name: Prepare
+  hosts: all
+
+  vars:
+    # Prefix all the config files so that we can run the `file` lookup function
+    # and skip over .bashrc and .zshrc which don't exist on the controller.
+    # NOTE: the local working directory seems to be the root of the repo,
+    #   and the remote working directory is `/`
+    config_files_in_files_dir: >
+      {{ [playbook_dir ~ '/files/'] | product(config_files | map('basename')) | map('join') }}
+
+  tasks:
+    - name: Copy file
+      ansible.builtin.copy:
+        src: "{{ item }}"
+        dest: "{{ ansible_env.HOME }}/{{ item | basename }}"
+        mode: '0644'
+      loop: "{{ config_files_in_files_dir | select('file') }}"

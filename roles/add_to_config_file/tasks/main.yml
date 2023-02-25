@@ -1,0 +1,83 @@
+# Safely insert a block into a config file (e.g., shell init file).
+#
+# Requires commands:
+# - perl
+#
+# Requires vars:
+# - path: config file, which may not exist.
+# - block_id: unique ID to be used for ansible-managed block
+# - block_content: block to be inserted into config file
+# Accepts vars:
+# - skip_if_match: perl regex to search for in config file. If found,
+#   the block will not be inserted. Remember to escape backslashes `\\`
+#   plus any slashes `\/`.
+#   E.g.: skip_if_match: '^\s*eval\b.*pyenv\s+init\b')
+---
+
+- name: Set config_file_path
+  ansible.builtin.set_fact:
+    config_file_path: "{{ path }}"
+
+- name: Check for existence of {{ config_file_path }}
+  ansible.builtin.stat:
+    path: "{{ config_file_path }}"
+  register: config_file_st
+
+- name: Check if symlink
+  when: config_file_st.stat.exists and config_file_st.stat.islnk
+  block:
+    - name: Resolve symlink {{ config_file_path }}
+      ansible.builtin.set_fact:
+        config_file_path: "{{ config_file_st.stat.lnk_source }}"
+
+    - name: Check again for existence of {{ config_file_path }}
+      ansible.builtin.stat:
+        path: "{{ config_file_path }}"
+      register: config_file_target_st
+
+    # NOTE: We can't just re-use config_file_target_st because the above
+    #   task overwrites that variable even if skipped.
+    - name: Overwrite config_file_st with config_file_target_st
+      ansible.builtin.set_fact:
+        config_file_st: "{{ config_file_target_st }}"
+
+- name: Check for skip condition {{ skip_if_match }}
+  when: >
+    skip_if_match | d('') != ''
+    and config_file_st.stat.exists and config_file_st.stat.isreg
+    and config_file_st.stat.size > 0
+  block:
+    - name: Escape double-quotes that may mess up the perl command
+      ansible.builtin.set_fact:
+        _skip_if_match: "{{ skip_if_match | regex_replace('\"', '\\\"') }}"
+
+    - name: Check content of config file {{ config_file_path }}
+      ansible.builtin.command: >
+        perl -ne "END { exit !$c } $c = 1 if /{{ _skip_if_match }}/"
+        {{ config_file_path }}
+      register: check_skip_match
+      # We need to distinguish between a failed command and an Ansible error,
+      # e.g. parsing because `_skip_if_match` doesn't have proper quoting.
+      failed_when: not check_skip_match.cmd
+      changed_when: false
+
+    - name: Set skip_add_to_config_file to true
+      ansible.builtin.set_fact:
+        skip_add_to_config_file: true
+      when: check_skip_match.rc == 0
+
+- name: Update {{ config_file_path }}
+  ansible.builtin.blockinfile:
+    dest: "{{ config_file_path }}"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK: {{ block_id }}"
+    create: true
+    mode: '0644'
+    block: "{{ block_content }}"
+  when: not skip_add_to_config_file | d(false)
+
+- name: Ensure an empty line before ansible-managed block
+  ansible.builtin.replace:
+    dest: "{{ config_file_path }}"
+    regexp: '(?sm)(?<!\n\n)^(# BEGIN ANSIBLE MANAGED BLOCK[^\n]*)$'
+    replace: "\n\\1"
+  when: not skip_add_to_config_file | d(false)

@@ -1,0 +1,11 @@
+github_actions: &github_actions
+  - '.github/paths-filter.yml'
+  - '.github/workflows/**'
+
+ansible: &ansible
+  - galaxy.yml
+  - '{docs,meta,plugins,roles}/**'
+
+all:
+  - *github_actions
+  - *ansible

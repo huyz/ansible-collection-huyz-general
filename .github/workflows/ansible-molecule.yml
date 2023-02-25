@@ -1,0 +1,50 @@
+---
+name: Lint
+
+on:
+  push:
+    branches:
+        - master
+  pull_request:
+
+env:
+  # https://www.jeffgeerling.com/blog/2020/getting-colorized-output-molecule-and-ansible-on-github-actions-ci
+  PY_COLORS: '1'
+  ANSIBLE_FORCE_COLOR: '1'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        scenario:
+          #- centos-8
+          #- debian-10
+          #- fedora-34
+          #- oraclelinux-8
+          - ubuntu-22.04
+
+    steps:
+      # XXX Apparently, "For pull requests it's not necessary to checkout the code"
+      - uses: actions/checkout@v4
+        if: github.event_name != 'pull_request'
+
+      - name: Set up Python 3.x
+        id: setup-python
+        uses: actions/setup-python@v4
+        with:
+          cache: 'pip'
+
+      - name: Check for changes in relevant files
+        id: changes
+        uses: dorny/paths-filter@v2
+        with:
+          filters: .github/paths-filter.yml
+
+      - name: Run pre-commit on changed ansible files
+        id: molecule
+        if: steps.changes.outputs.ansible == 'true'
+        uses: gofrolist/molecule-action@v2
+        with:
+          molecule_working_dir: roles/add_to_config_file

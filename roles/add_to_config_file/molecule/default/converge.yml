@@ -1,0 +1,17 @@
+---
+- name: Converge
+  hosts: all
+
+  tasks:
+    - name: Add .pyenv-init.sh to shell init file(s)
+      ansible.builtin.include_role:
+        name: huyz.general.add_to_config_file
+      vars:
+        path: "{{ item }}"
+        block_id: pyenv
+        block_content: |
+          if [ -f ~/.pyenv-init.sh ]; then
+              source ~/.pyenv-init.sh
+          fi
+        skip_if_match: '^\s*eval "\$\(pyenv init\b|^\s*source .*\.pyenv-init\.sh'
+      loop: "{{ config_files }}"
