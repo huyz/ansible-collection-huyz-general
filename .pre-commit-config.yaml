@@ -68,3 +68,8 @@ repos:
           - '--profile=production'
           # XXX Temp: 2023-02-25 https://github.com/ansible/ansible-lint/issues/3084
           - '--skip-list=schema[galaxy]'
+
+ci:
+    # ansible-lint requires the poetry environment in our case and pre-commit.ci
+    # doesn't seem to support that.
+    skip: [ansible-lint]
