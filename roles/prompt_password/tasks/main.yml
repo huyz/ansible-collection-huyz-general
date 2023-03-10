@@ -1,0 +1,24 @@
+# Accepts vars:
+# - copy_to_become_password: true to automatically set `become_password`
+#   as well (if not yet defined).
+---
+- name: Prompt for ssh password if necessary
+  when: ansible_password is undefined
+  block:
+    - name: Conditionally prompt for ssh password
+      ansible.builtin.pause:
+        prompt: "Password for {{ ansible_user_id | d('unknown') }}@{{ ansible_host | d('unknown') }}"
+        echo: false
+      register: password_prompt
+      no_log: true
+
+    - name: Set ansible_password
+      ansible.builtin.set_fact:
+        ansible_password: "{{ password_prompt.user_input }}"
+      no_log: true
+
+- name: Set ansible_become_password
+  ansible.builtin.set_fact:
+    ansible_become_password: "{{ ansible_password }}"
+  no_log: true
+  when: copy_to_become_password | d(false) and ansible_become_password is undefined

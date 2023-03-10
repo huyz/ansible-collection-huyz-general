@@ -5,6 +5,21 @@ huyz.general Release Notes
 .. contents:: Topics
 
 
+v1.0.3
+======
+
+Release Summary
+---------------
+
+| Release Date: 2023-03-09
+| Initial release of the password_prompt role
+
+
+Major Changes
+-------------
+
+- prompt_password - initial commit
+
 v1.0.2
 ======
 

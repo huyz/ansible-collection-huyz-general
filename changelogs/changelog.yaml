@@ -13,3 +13,16 @@ releases:
     - 2023-02-25_add_to_config_file.yml
     - 2023-02-25_v1.0.2_summary.yml
     release_date: '2023-02-25'
+  1.0.3:
+    changes:
+      major_changes:
+      - prompt_password - initial commit
+      release_summary: '| Release Date: 2023-03-09
+
+        | Initial release of the password_prompt role
+
+        '
+    fragments:
+    - 2023-03-09_prompt_password.yml
+    - 2023-03-09_v1.0.3_summary.yml
+    release_date: '2023-03-09'

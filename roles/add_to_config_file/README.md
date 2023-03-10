@@ -8,7 +8,7 @@ Safely insert a block into one or more shell config files:
 
 ## Installation
 
-This repo uses the FCQN convention.
+This repo uses the FQCN convention.
 
 Include the collection in the Ansible Galaxy `requirements.yml`:
 
