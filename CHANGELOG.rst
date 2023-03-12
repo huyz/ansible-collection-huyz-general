@@ -13,12 +13,14 @@ Release Summary
 
 | Release Date: 2023-03-09
 | Initial release of the password_prompt role
+| Initial release of the sudo_by_ssh_agent role
 
 
 Major Changes
 -------------
 
 - prompt_password - initial commit
+- sudo_by_ssh_agent - initial commit
 
 v1.0.2
 ======

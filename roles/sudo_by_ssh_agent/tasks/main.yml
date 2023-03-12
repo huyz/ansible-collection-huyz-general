@@ -1,0 +1,41 @@
+# Requires vars:
+# - pub_files_for_sudo: list of full path of the public keys to use for sudo
+---
+- name: Ensure libpam-ssh-agent-auth package
+  ansible.builtin.package:
+    name: libpam-ssh-agent-auth
+  become: true
+
+- name: Add to sudo authorized_keys the content of {{ pub_files_for_sudo }}
+  ansible.posix.authorized_key:
+    user: root  # dummy
+    key: "{{ lookup('file', item) }}"
+    path: /etc/security/authorized_keys
+    manage_dir: false
+  become: true
+  loop: "{{ pub_files_for_sudo }}"
+
+# Per https://www.lorier.net/docs/ssh-agent-sudo.html
+- name: Enable pam_ssh_agent_auth for sudo
+  ansible.builtin.blockinfile:
+    dest: /etc/pam.d/sudo
+    marker: "# {mark} ANSIBLE MANAGED BLOCK: {{ block_id }}"
+    insertbefore: "@include common-auth"
+    block: |
+      # Allow sudo by ssh agent
+      auth       sufficient pam_ssh_agent_auth.so file=/etc/security/authorized_keys
+  vars:
+    block_id: sudo_by_ssh_agent
+  become: true
+
+# Per https://www.lorier.net/docs/ssh-agent-sudo.html
+- name: Preserve SSH_AUTH_SOCK for sudo
+  ansible.builtin.blockinfile:
+    dest: /etc/sudoers
+    marker: "# {mark} ANSIBLE MANAGED BLOCK: {{ block_id }}"
+    insertafter: '#Defaults:%sudo env_keep \+= "SSH_AGENT_PID SSH_AUTH_SOCK"'
+    block: |
+      Defaults:%sudo env_keep += "SSH_AGENT_PID SSH_AUTH_SOCK"
+  vars:
+    block_id: sudo_by_ssh_agent
+  become: true

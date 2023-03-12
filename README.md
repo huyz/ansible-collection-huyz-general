@@ -11,11 +11,15 @@ This Ansible collection contains roles for general use.
 Roles:
 
 - `huyz.general.add_to_config_file` ([README](https://github.com/huyz/ansible-collection-huyz-general/blob/master/roles/add_to_config_file/README.md))
-    - Function: Safely insert a block into one or more shell config files
-    - Use case: Mainly intended to be re-used by other roles
+    - Function: Safely insert a block into one or more shell config files.
+    - Use case: Mainly intended to be re-used by other roles.
 - `huyz.general.prompt_password` ([README](https://github.com/huyz/ansible-collection-huyz-general/blob/master/roles/prompt_password/README.md))
     - Function: Prompts for the `ansible_password` if not defined.
-    - Use case: Avoid the need to call `ansible-playbook` with `--ask-pass` and `--ask-become-pass`
+    - Use case: Avoid the need to call `ansible-playbook` with `--ask-pass` and `--ask-become-pass`.
+- `huyz.general.sudo_by_ssh_agent` ([README](https://github.com/huyz/ansible-collection-huyz-general/blob/master/roles/sudo_by_ssh_agent/README.md))
+    - Function: Configures sudo to use the `libpam-ssh-agent-auth` package and
+      authorize the provided ssh key.
+    - Use case: Avoid the need to authenticate with a password to run privileged commands.
 
 ---
 
