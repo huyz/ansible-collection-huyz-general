@@ -10,7 +10,7 @@
 # Requires a ANSIBLE_GALAXY_API_KEY secret to be configured on the GitHub repo.
 #
 # Usage:
-#   ansible-playbook -i 'localhost,' galaxy-release.yml -e "github_tag=${{ github.ref }}"
+#   ansible-playbook -i 'localhost,' galaxy-publish.yml -e "github_tag=${{ github.ref }}"
 
 - name: Deploy to Galaxy
   hosts: localhost

@@ -1,9 +1,11 @@
 ---
-name: Release
+name: Publish on Galaxy
 'on':
   push:
     tags:
       - '*'
+  workflow_dispatch:
+
 
 env:
   WORKING_DIR: ansible_collections/huyz/general

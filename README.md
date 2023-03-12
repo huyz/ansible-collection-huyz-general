@@ -81,9 +81,25 @@ pre-commit run -v
 - `ansible-molecule.yml`
     - Triggered by: push to master and pull requests; weekly
     - Runs Ansible Molecule on all the roles defined by the collection
-- `release.yml`
+- `publish.yml`
     - Triggered by new tags
-    - Builds collection and releases to Ansible Galaxy
+    - Builds collection and publishes it to Ansible Galaxy
+
+### How to publish on Ansible Galaxy
+
+Typically:
+
+1. Create a "GitHub release", while creating a new tag of the form `vX.Y.Z`.
+1. The `publish.yml` GitHub Workflow should automatically publish a "Galaxy release".
+
+Sometimes, the `release` GitHub Workflow fails.
+(For example, on 2023-03-12, the `artis3n/ansible_galaxy_collection@v2` GitHub Action  ansible-galaxy, which failed with `ERROR! Use of "manifest" requires the python "distlib" library`.)
+
+To manually trigger a "Galaxy release":
+
+```shell
+make publish
+```
 
 ---
 
