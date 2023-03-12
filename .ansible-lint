@@ -17,8 +17,6 @@ skip_list:
     - package-latest
     # I like to use comments with no space to signify disabled code
     - yaml[comments]
-    # XXX Temp: 2023-02-25 https://github.com/ansible/ansible-lint/issues/3084
-    - schema[galaxy]
 
 kinds:
     ## My own files
