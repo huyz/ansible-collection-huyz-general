@@ -89,22 +89,29 @@ test = ["black", "coverage-enable-subprocess", "coverage[toml] (>=6.4.4)", "flak
 
 [[package]]
 name = "antsibull-changelog"
-version = "0.18.0"
+version = "0.20.0"
 description = "Changelog tool for Ansible-base and Ansible collections"
 category = "dev"
 optional = false
-python-versions = ">=3.9.0,<4.0.0"
+python-versions = ">=3.9.0"
 files = [
-    {file = "antsibull_changelog-0.18.0-py3-none-any.whl", hash = "sha256:29411a3faba6808fd676f3d642f36c2924a17d7efa4598b185f65e9f1e46a6e0"},
-    {file = "antsibull_changelog-0.18.0.tar.gz", hash = "sha256:a68e561dc852da2fe918ab401c2aa09598615c8647c7a4ca3712903efbbeb66e"},
+    {file = "antsibull_changelog-0.20.0-py3-none-any.whl", hash = "sha256:e9f976b37b824d78185f98427e3fa62e3e8b539b49c4e670886d1fab650583ee"},
+    {file = "antsibull_changelog-0.20.0.tar.gz", hash = "sha256:f473f9cb07c615dc3ae0522934166da9972a1bb5520349627daad5f47e7b0435"},
 ]
 
 [package.dependencies]
 docutils = "*"
 packaging = "*"
-PyYAML = "*"
+pyyaml = "*"
 rstcheck = ">=3.0.0,<7.0.0"
-semantic_version = "*"
+semantic-version = "*"
+
+[package.extras]
+codeqa = ["flake8 (>=3.8.0)", "pylint", "reuse"]
+coverage = ["coverage[toml]"]
+dev = ["antsibull-changelog[codeqa]", "antsibull-changelog[coverage]", "antsibull-changelog[test]", "antsibull-changelog[typing]", "nox"]
+test = ["mock", "pytest", "pytest-cov", "pytest-error-for-skips"]
+typing = ["mypy", "pyre-check (>=0.9.17,<0.10.0)", "types-docutils", "types-pyyaml", "types-toml"]
 
 [[package]]
 name = "arrow"
@@ -1597,4 +1604,4 @@ setuptools = "*"
 [metadata]
 lock-version = "2.0"
 python-versions = "~3.11"
-content-hash = "71d5fbb9c6f50162b8a2912e7dfe56b94351fbdd5b3cc8b945857350b661125a"
+content-hash = "d9830fe3b6f5e746b561cdb493d405e4acc8a25fee8cfeb1ef3e0dd9f3d7cd2c"
