@@ -17,7 +17,7 @@ pre-commit = "^3.1.1"
 # Avoid the dumb, irrelevant ansible-lint error
 # https://github.com/ansible/ansible-lint/discussions/2820
 ansible-lint = { version = "^6.13.1", markers = "platform_system != 'Windows'" }
-molecule = { extras = ["docker"], version = "^4.0.4" }
+molecule = { extras = ["docker"], version = "^5.0.0" }
 pytest-testinfra = "^7.0.0"
 pytest-subtests = "^0.10.0"
 
