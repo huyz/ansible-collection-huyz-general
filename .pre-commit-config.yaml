@@ -47,24 +47,17 @@ repos:
     hooks:
       - id: actionlint
 
-  # We cannot run ansible-lint in isolation because galaxy.yml uses manifest, which means
-  # we need the `distlib` pip dependency.
-  #- repo: https://github.com/ansible/ansible-lint
-  #  rev: v6.13.1
-  #  hooks:
-  #    - id: ansible-lint
-  #      files: \.(yaml|yml)$
-  #      args:
-  #        - '--profile=production'
-
-  - repo: local
+  - repo: https://github.com/ansible/ansible-lint
+    rev: v6.16.0
     hooks:
-      - name: ansible-lint
-        id: ansible-lint
-        language: system
-        entry: poetry run ansible-lint
+      - id: ansible-lint
+        # galaxy.yml uses manifest, which means we need the `distlib` dependency.
+        additional_dependencies: [distlib]
         files: \.(yaml|yml)$
         args:
+          - '-c'
+          - '.ansible-lint'
+          - '--nocolor'
           - '--profile=production'
 
 ci:
