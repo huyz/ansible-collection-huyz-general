@@ -7,7 +7,7 @@
   block:
     - name: Conditionally prompt for ssh password
       ansible.builtin.pause:
-        prompt: "Password for {{ ansible_user_id | d('unknown') }}@{{ ansible_host | d('unknown') }}"
+        prompt: "Password for {{ ansible_user | d('') }}@{{ ansible_host | d('unknown') }}"
         echo: false
       register: password_prompt
       no_log: true
@@ -17,7 +17,7 @@
         ansible_password: "{{ password_prompt.user_input }}"
       no_log: true
 
-- name: Set ansible_become_password
+- name: Set ansible_become_password to be the same as ssh password
   ansible.builtin.set_fact:
     ansible_become_password: "{{ ansible_password }}"
   no_log: true

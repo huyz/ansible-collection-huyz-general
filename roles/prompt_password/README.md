@@ -25,7 +25,7 @@ You can then include the role `huyz.general.prompt_password`.
 ```yaml
 - name: Prompt for ansible_password if needed
     ansible.builtin.include_role:
-        name: huyz.generalprompt_password
+        name: huyz.general.prompt_password
     vars:
         copy_to_become_password: true
 ```
