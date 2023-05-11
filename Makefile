@@ -33,7 +33,7 @@ all: test publish
 # XXX Temp: Skip roles in huyz/*
 .PHONY: test
 test:
-	ansible-test sanity --docker default -v --exclude '.*\.sh$$' --exclude 'bin/*' --exclude 'roles/huyz/*'
+	ansible-test sanity --docker default -v --exclude '.*\.sh$$' --exclude 'roles/huyz/*'
 
 
 # Running `ansible-test sanity --docker default -v` may give this error:
