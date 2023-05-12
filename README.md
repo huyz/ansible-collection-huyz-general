@@ -57,7 +57,7 @@ antsibull-changelog lint
 
 #### For a new release
 
-Create a manual fragments in `changeslogs/fragments` named `DATE_vVERSION_summary.yml` with `release_summary` property.
+Create a manual fragment in `changeslogs/fragments` named `DATE_vVERSION_summary.yml` with `release_summary` property.
 
 Generate the changelog for the release:
 
@@ -93,9 +93,11 @@ Typically:
 1. The `publish.yml` GitHub Workflow should automatically publish a "Galaxy release".
 
 Sometimes, the `release` GitHub Workflow fails.
-(For example, on 2023-03-12, the `artis3n/ansible_galaxy_collection@v2` GitHub Action  ansible-galaxy, which failed with `ERROR! Use of "manifest" requires the python "distlib" library`.)
+(For example, on 2023-03-12 the `artis3n/ansible_galaxy_collection@v2` GitHub
+Action ansible-galaxy failed with `ERROR! Use of "manifest" requires the
+python "distlib" library`.)
 
-To manually trigger a "Galaxy release":
+So to manually trigger a "Galaxy release":
 
 ```shell
 make publish
