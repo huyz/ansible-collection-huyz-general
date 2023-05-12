@@ -15,9 +15,12 @@ distlib = "^0.3.6"
 antsibull-changelog = "^0.18.0"
 pre-commit = "^3.1.1"
 # Avoid the dumb, irrelevant ansible-lint error
-# https://github.com/ansible/ansible-lint/discussions/2820
-ansible-lint = { version = "^6.13.1", markers = "platform_system != 'Windows'" }
-molecule = { extras = ["docker"], version = "^4.0.4" }
+#   https://github.com/ansible/ansible-lint/discussions/2820
+ansible-lint = { version = "^6.16.0", markers = "platform_system != 'Windows'" }
+# molecule >= 5.0.1 to avoid ansible-compat issue with 4.x
+#   https://github.com/ansible-community/molecule/issues/3903
+molecule = { version = "^5.0.1" }
+molecule-plugins = { extras = ["docker"], version = "^23.4.1" }
 pytest-testinfra = "^7.0.0"
 pytest-subtests = "^0.10.0"
 

@@ -1,0 +1,6 @@
+bugfixes:
+  - ansible-lint - fix handling of `manifest` in galaxy.yml
+  - ansible-lint - fix dependency on distlib in pre-commit config
+
+major_changes:
+  - upgrade dependencies in `poetry.lock`

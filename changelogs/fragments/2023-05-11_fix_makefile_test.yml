@@ -1,0 +1,2 @@
+bugfixes:
+  - Makefile - fix `test` target
