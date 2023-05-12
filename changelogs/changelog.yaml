@@ -30,3 +30,32 @@ releases:
     - 2023-03-09_sudo_by_ssh_agent.yml
     - 2023-03-09_v1.0.3_summary.yml
     release_date: '2023-03-09'
+  1.0.4:
+    changes:
+      bugfixes:
+      - Makefile - fix `test` target
+      - ansible-lint - fix dependency on distlib in pre-commit config
+      - ansible-lint - fix handling of `manifest` in galaxy.yml
+      - sudo_by_ssh_agent - fix this collection's dependency on `ansible.posix`
+      major_changes:
+      - upgrade ansible version to 2.14.5 (since that's just what I'm testing)
+      - upgrade dependencies in `poetry.lock`
+      minor_changes:
+      - prompt_password - improved UI output
+      release_summary: '| Release Date: 2023-05-12
+
+        | Fix collection dependencies, ansible-lint, Makefile
+
+        | Upgrade Ansible version to 2.14.5 and other Python dependencies
+
+        '
+      trivial:
+      - prompt_password - fixed example in README
+    fragments:
+    - 2023-05-11_fix_ansiblelint_manifest.yml
+    - 2023-05-11_fix_makefile_test.yml
+    - 2023-05-11_prompt_password_minor.yml
+    - 2023-05-11_upgrade_ansible_version.yml
+    - 2023-05-12_fix_posix_dependency.yml
+    - 2023-05-12_v1.0.4_summary.yml
+    release_date: '2023-05-12'
