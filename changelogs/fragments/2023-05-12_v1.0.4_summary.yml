@@ -1,0 +1,4 @@
+release_summary: |
+  | Release Date: 2023-05-12
+  | Fix collection dependencies, ansible-lint, Makefile
+  | Upgrade Ansible version to 2.14.5 and other Python dependencies

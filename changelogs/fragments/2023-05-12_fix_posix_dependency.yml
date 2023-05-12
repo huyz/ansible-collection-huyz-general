@@ -1,0 +1,2 @@
+bugfixes:
+  - sudo_by_ssh_agent - fix this collection's dependency on `ansible.posix`
