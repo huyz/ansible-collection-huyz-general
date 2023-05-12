@@ -60,8 +60,3 @@ repos:
           - '--nocolor'
           - '--profile=production'
         stages: [pre-push, pre-merge-commit]
-
-ci:
-    # ansible-lint requires the poetry environment in our case and pre-commit.ci
-    # doesn't seem to support that.
-    skip: [ansible-lint]
