@@ -89,15 +89,19 @@ pre-commit run -v
 
 Typically:
 
-1. Create a "GitHub release", while creating a new tag of the form `vX.Y.Z`.
+1. Draft a new "GitHub release":
+    1. Choose tag: create new tag of the form `vX.Y.Z`.
+    1. Title: `vX.Y.Z`
+    1. Description: paste in the entry from the auto-generated `CHANGELOG.rst`
+    1. Check `Set as a pre-release`
 1. The `publish.yml` GitHub Workflow should automatically publish a "Galaxy release".
+1. Check the action results. If successful, edit the GitHub release:
+    1. Uncheck `Set as a pre-release`
+    1. Check `Set as the latest release`
 
-Sometimes, the `release` GitHub Workflow fails.
-(For example, on 2023-03-12 the `artis3n/ansible_galaxy_collection@v2` GitHub
-Action ansible-galaxy failed with `ERROR! Use of "manifest" requires the
-python "distlib" library`.)
+Note that the "Publish on Galaxy" action can be triggered manually on githubl.com
 
-So to manually trigger a "Galaxy release":
+To manually trigger a "Galaxy release" at the command line:
 
 ```shell
 make publish
