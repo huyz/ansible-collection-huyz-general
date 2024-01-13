@@ -9,7 +9,7 @@ license = "MIT"
 python = "^3.11.1"
 ansible = "^9.1.0"
 # For use of `manifest` in galaxy.xml
-distlib = "^0.3.7"
+distlib = "^0.3.8"
 
 [tool.poetry.group.dev.dependencies]
 antsibull-changelog = "^0.23.0"
