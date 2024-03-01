@@ -88,13 +88,13 @@ test = ["black", "coverage-enable-subprocess", "coverage[toml] (>=6.4.4)", "jmes
 
 [[package]]
 name = "antsibull-changelog"
-version = "0.23.0"
-description = "Changelog tool for Ansible-base and Ansible collections"
+version = "0.25.0"
+description = "Changelog tool for Ansible-core and Ansible collections"
 optional = false
 python-versions = ">=3.9.0"
 files = [
-    {file = "antsibull_changelog-0.23.0-py3-none-any.whl", hash = "sha256:e9c3425fe6ef8e495aec19705be4af826612f921bdc8dd6dc54d15f70532065f"},
-    {file = "antsibull_changelog-0.23.0.tar.gz", hash = "sha256:521985407e1aa2aef1dbfb2b87275cd6f03ea9a96c0c704e9f9cb04141f90e0b"},
+    {file = "antsibull_changelog-0.25.0-py3-none-any.whl", hash = "sha256:a74f85d07df23ed323c603204a5895aa7532cae0ffba11d5b48eccdf4e6ae80e"},
+    {file = "antsibull_changelog-0.25.0.tar.gz", hash = "sha256:dcba61fdb6721ae7afb5fd39805918289241cf45fe36d7b1d3346bdf8dcee2fa"},
 ]
 
 [package.dependencies]
@@ -108,7 +108,7 @@ semantic-version = "*"
 codeqa = ["flake8 (>=3.8.0)", "pylint", "reuse"]
 coverage = ["coverage[toml]"]
 dev = ["antsibull-changelog[codeqa]", "antsibull-changelog[coverage]", "antsibull-changelog[formatters]", "antsibull-changelog[test]", "antsibull-changelog[typing]", "nox"]
-formatters = ["black", "isort"]
+formatters = ["black (>=24)", "isort"]
 test = ["pytest", "pytest-cov", "pytest-error-for-skips"]
 toml = ["tomli"]
 typing = ["mypy", "pyre-check (>=0.9.17)", "types-docutils", "types-pyyaml", "types-toml"]
@@ -1571,4 +1571,4 @@ dev = ["doc8", "flake8", "flake8-import-order", "rstcheck[sphinx]", "sphinx"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11.1"
-content-hash = "568e91de861f00a2ead2063090026c2749af6bc186a043f11efe77f98876f565"
+content-hash = "c08ff435fc895e7d2ce8c31ed4bab69febbefee96f655789c9f9f066a8628bb4"
