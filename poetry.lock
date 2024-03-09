@@ -983,17 +983,17 @@ pytest = ">=7.0"
 
 [[package]]
 name = "pytest-testinfra"
-version = "10.0.0"
+version = "10.1.0"
 description = "Test infrastructures"
 optional = false
 python-versions = ">=3.9"
 files = [
-    {file = "pytest-testinfra-10.0.0.tar.gz", hash = "sha256:2fb7d0185458a9ba669ff14d0ddbec8b3900c6bde3fb6fad9b097374ce4ab77d"},
-    {file = "pytest_testinfra-10.0.0-py3-none-any.whl", hash = "sha256:03be2824aece7a5eda8bb4f9dbed4d8c821efcfbbc13e13df17f392c229a44ed"},
+    {file = "pytest-testinfra-10.1.0.tar.gz", hash = "sha256:f774339b94775acdf3a8c4a3793a8ead2e8dfc70ff34b778be15aaba140fa19e"},
+    {file = "pytest_testinfra-10.1.0-py3-none-any.whl", hash = "sha256:0a03b7f21c863396adba9578880e5a1a6764e9d20bb603e25317883fdeda024b"},
 ]
 
 [package.dependencies]
-pytest = "!=3.0.2"
+pytest = ">=6"
 
 [package.extras]
 ansible = ["ansible"]
@@ -1571,4 +1571,4 @@ dev = ["doc8", "flake8", "flake8-import-order", "rstcheck[sphinx]", "sphinx"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11.1"
-content-hash = "abf7f0055b6fd0bf366db729d51fb5d7d2858618db7fd24c6908c5370281c9af"
+content-hash = "3c571a314810fcc854db3c4f622d515735e12d4502034fbe8b7445770f6013e8"
