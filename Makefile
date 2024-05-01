@@ -1,6 +1,8 @@
 # Useful targets:
 # - test: sanity checks
-# - build, publish: no longer in uses, as we rely on GitHub Actions
+# - build: used only for generating development tarball to be used by
+#   dot-super/ansible
+# - publish: no longer in use, as we rely on GitHub Actions
 
 ##############################################################################
 # Config
