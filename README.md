@@ -55,6 +55,24 @@ To lint the fragments:
 antsibull-changelog lint
 ```
 
+#### To test out in dot-super/general
+
+```shell
+make build
+```
+
+In `dot-super/general`, have `requirements.yml` contain:
+
+```yaml
+collections:
+  # my own collection (the development version)
+  - name: ../../ansible-collection-huyz-general/huyz-general-latest.tar.gz
+```
+
+```shell
+install.sh
+```
+
 #### For a new release
 
 Create a manual fragment in `changeslogs/fragments` named `DATE_vVERSION_summary.yml` with `release_summary` property.
