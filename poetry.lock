@@ -13,17 +13,17 @@ files = [
 
 [[package]]
 name = "ansible"
-version = "9.4.0"
+version = "9.6.0"
 description = "Radically simple IT automation"
 optional = false
 python-versions = ">=3.10"
 files = [
-    {file = "ansible-9.4.0-py3-none-any.whl", hash = "sha256:f1d67a2c21dbed3fee4fe579f750e5d20b5a5f13f4399f256a8a70f0505e62f7"},
-    {file = "ansible-9.4.0.tar.gz", hash = "sha256:dd431c63380e18c3faca3288ebde8ce2f4f992363ab558a3c11c8f2032d90867"},
+    {file = "ansible-9.6.0-py3-none-any.whl", hash = "sha256:8c0ffdc8dd58a22d709a5ac567bc62f17e689fb37bbf202788548c3d226631e0"},
+    {file = "ansible-9.6.0.tar.gz", hash = "sha256:58732a4ad74a746d299ecfa48b7a91cb217e2c0bd3a44493f2d9f29af2f3ab61"},
 ]
 
 [package.dependencies]
-ansible-core = ">=2.16.5,<2.17.0"
+ansible-core = ">=2.16.7,<2.17.0"
 
 [[package]]
 name = "ansible-compat"
@@ -49,13 +49,13 @@ test = ["coverage", "pip-tools", "pytest (>=7.2.0)", "pytest-mock", "pytest-plus
 
 [[package]]
 name = "ansible-core"
-version = "2.16.5"
+version = "2.16.7"
 description = "Radically simple IT automation"
 optional = false
 python-versions = ">=3.10"
 files = [
-    {file = "ansible-core-2.16.5.tar.gz", hash = "sha256:cdd29b0ec3f20c35657355a2f6a9c1d0cf1131da99cc9a4a3401801b0ab36d6d"},
-    {file = "ansible_core-2.16.5-py3-none-any.whl", hash = "sha256:371b0bb11d109a58982684307c18cc44ff8d408b1b3350c0c5c78d9f096ee1f1"},
+    {file = "ansible_core-2.16.7-py3-none-any.whl", hash = "sha256:3e1b0ed76ff40d8722f1b5bf19348b95ff226ef5157f7afd720e3da1369a4a6e"},
+    {file = "ansible_core-2.16.7.tar.gz", hash = "sha256:a8c8f4facba30514571d47abec5c62a5768b86fef3d80d724911c8f20b7b34b7"},
 ]
 
 [package.dependencies]
@@ -98,13 +98,13 @@ test = ["black", "coverage-enable-subprocess", "coverage[toml] (>=6.4.4)", "jmes
 
 [[package]]
 name = "antsibull-changelog"
-version = "0.25.0"
+version = "0.28.0"
 description = "Changelog tool for Ansible-core and Ansible collections"
 optional = false
 python-versions = ">=3.9.0"
 files = [
-    {file = "antsibull_changelog-0.25.0-py3-none-any.whl", hash = "sha256:a74f85d07df23ed323c603204a5895aa7532cae0ffba11d5b48eccdf4e6ae80e"},
-    {file = "antsibull_changelog-0.25.0.tar.gz", hash = "sha256:dcba61fdb6721ae7afb5fd39805918289241cf45fe36d7b1d3346bdf8dcee2fa"},
+    {file = "antsibull_changelog-0.28.0-py3-none-any.whl", hash = "sha256:a407244af6588c1eab854fe21383685c51a087a0f99618014e4557a446954ff4"},
+    {file = "antsibull_changelog-0.28.0.tar.gz", hash = "sha256:1a9f6da1a50f5fabe6351daf1ef91937c25f8356acbbacb55681a9e44b7f0858"},
 ]
 
 [package.dependencies]
@@ -117,7 +117,7 @@ semantic-version = "*"
 [package.extras]
 codeqa = ["flake8 (>=3.8.0)", "pylint", "reuse"]
 coverage = ["coverage[toml]"]
-dev = ["antsibull-changelog[codeqa]", "antsibull-changelog[coverage]", "antsibull-changelog[formatters]", "antsibull-changelog[test]", "antsibull-changelog[typing]", "nox"]
+dev = ["black (>=24)", "coverage[toml]", "flake8 (>=3.8.0)", "isort", "mypy", "nox", "pylint", "pyre-check (>=0.9.17)", "pytest", "pytest-cov", "pytest-error-for-skips", "reuse", "types-docutils", "types-pyyaml", "types-toml"]
 formatters = ["black (>=24)", "isort"]
 test = ["pytest", "pytest-cov", "pytest-error-for-skips"]
 toml = ["tomli"]
@@ -759,13 +759,13 @@ files = [
 
 [[package]]
 name = "molecule"
-version = "6.0.3"
+version = "24.2.1"
 description = "Molecule aids in the development and testing of Ansible roles"
 optional = false
-python-versions = ">=3.9"
+python-versions = ">=3.10"
 files = [
-    {file = "molecule-6.0.3-py3-none-any.whl", hash = "sha256:8e5d7a7841f9ed5dd26878d24951ec030b86f780aca17ffc509db8076f42de3d"},
-    {file = "molecule-6.0.3.tar.gz", hash = "sha256:d2a881062fcc5ef1e08c1e5127c04354d2c95171955e270bd82b3fbfef72d3b0"},
+    {file = "molecule-24.2.1-py3-none-any.whl", hash = "sha256:484764c8ae40c7918eb5e43b0bec0315e71f7ed82c36cc9b274f17e42ba00cc8"},
+    {file = "molecule-24.2.1.tar.gz", hash = "sha256:83522baa9b91560ea986273cab149c39156976e9d61245717226320935ad56e4"},
 ]
 
 [package.dependencies]
@@ -783,7 +783,7 @@ rich = ">=9.5.1"
 wcmatch = ">=8.1.2"
 
 [package.extras]
-docs = ["linkchecker (==10.2.1)", "mkdocs-ansible[lock] (>=0.2.0)", "pipdeptree (>=2.4.0)"]
+docs = ["linkchecker (>=10.4.0)", "mkdocs-ansible (>=24.3.0)", "pipdeptree (>=2.4.0)"]
 test = ["ansi2html (>=1.8.0)", "ansible-lint (>=6.12.1)", "check-jsonschema", "coverage (>=7.0.3)", "filelock (>=3.9.0)", "pexpect (>=4.8.0,<5)", "pytest (>=7.2.0)", "pytest-mock (>=3.10.0)", "pytest-plus (>=0.4.0)", "pytest-xdist (>=3.1.0)"]
 testinfra = ["pytest-testinfra (>=8.1.0)"]
 
@@ -1079,13 +1079,13 @@ pytest = ">=7.0"
 
 [[package]]
 name = "pytest-testinfra"
-version = "10.1.0"
+version = "10.1.1"
 description = "Test infrastructures"
 optional = false
 python-versions = ">=3.9"
 files = [
-    {file = "pytest-testinfra-10.1.0.tar.gz", hash = "sha256:f774339b94775acdf3a8c4a3793a8ead2e8dfc70ff34b778be15aaba140fa19e"},
-    {file = "pytest_testinfra-10.1.0-py3-none-any.whl", hash = "sha256:0a03b7f21c863396adba9578880e5a1a6764e9d20bb603e25317883fdeda024b"},
+    {file = "pytest-testinfra-10.1.1.tar.gz", hash = "sha256:a876f1453a01b58d94d9d936dd50344c2c01ac7880a2b41d15bdf233aed9cf1f"},
+    {file = "pytest_testinfra-10.1.1-py3-none-any.whl", hash = "sha256:b990dc7d77b49a1bba24818fbff49b6171d8c46d606fb5ca86b937de690d7062"},
 ]
 
 [package.dependencies]
@@ -1686,4 +1686,4 @@ dev = ["doc8", "flake8", "flake8-import-order", "rstcheck[sphinx]", "sphinx"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11.1"
-content-hash = "651f7ca2d38cd835b38d60044981beb980fafa0c123ce896e75a9adaea568090"
+content-hash = "4c18d02911ad718e5703b9543cc36e077510f0e9a092e77ddc087f719662d47c"
