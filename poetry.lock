@@ -98,13 +98,13 @@ test = ["black", "coverage-enable-subprocess", "coverage[toml] (>=6.4.4)", "jmes
 
 [[package]]
 name = "antsibull-changelog"
-version = "0.28.0"
+version = "0.29.0"
 description = "Changelog tool for Ansible-core and Ansible collections"
 optional = false
 python-versions = ">=3.9.0"
 files = [
-    {file = "antsibull_changelog-0.28.0-py3-none-any.whl", hash = "sha256:a407244af6588c1eab854fe21383685c51a087a0f99618014e4557a446954ff4"},
-    {file = "antsibull_changelog-0.28.0.tar.gz", hash = "sha256:1a9f6da1a50f5fabe6351daf1ef91937c25f8356acbbacb55681a9e44b7f0858"},
+    {file = "antsibull_changelog-0.29.0-py3-none-any.whl", hash = "sha256:992533e66c908929a79f4881cb8e668b9f3e90e12bf16a8bcb7a9e43d4fb3b37"},
+    {file = "antsibull_changelog-0.29.0.tar.gz", hash = "sha256:b86d7e8e1a4f5ea7022f016efde2693262efe8bdf78be7f1b6e26f9673a6c70e"},
 ]
 
 [package.dependencies]
@@ -1686,4 +1686,4 @@ dev = ["doc8", "flake8", "flake8-import-order", "rstcheck[sphinx]", "sphinx"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11.1"
-content-hash = "4c18d02911ad718e5703b9543cc36e077510f0e9a092e77ddc087f719662d47c"
+content-hash = "0e0a444aab072adbddd353e2a95a1a6c6e3a001ee4e7b248b4078de9e42444d3"
