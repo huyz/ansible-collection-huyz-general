@@ -119,7 +119,7 @@ Typically:
     1. Uncheck `Set as a pre-release`
     1. Check `Set as the latest release`
 
-Note that the "Publish on Galaxy" action can be triggered manually on githubl.com
+Note that the "Publish on Galaxy" action can be triggered manually on github.com
 
 To manually trigger a "Galaxy release" at the command line:
 
@@ -136,6 +136,6 @@ MIT
 [badge-license]: https://img.shields.io/github/license/huyz/ansible-collection-huyz-general
 [link-license]: https://github.com/huyz/ansible-collection-huyz-general/blob/master/LICENSE
 [badge-collection]: https://img.shields.io/badge/collection-huyz.general-blue
-[link-galaxy]: https://galaxy.ansible.com/huyz/general
+[link-galaxy]: https://galaxy.ansible.com/ui/repo/published/huyz/general/
 [badge-gh-actions]: https://github.com/huyz/ansible-collection-huyz-general/actions/workflows/ansible-molecule.yml/badge.svg?event=push
 [link-gh-actions]: https://github.com/huyz/ansible-collection-huyz-general/actions/workflows/ansible-molecule.yml
