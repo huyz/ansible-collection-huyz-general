@@ -47,9 +47,9 @@ Update the `title` and set `keep_fragments: true`.
 
 #### After each change
 
-Create a manual fragments in `changeslogs/fragments`.
+First, create a manual fragments in `changeslogs/fragments`.
 
-To lint the fragments:
+Then, to lint the fragments:
 
 ```shell
 antsibull-changelog lint
@@ -70,14 +70,16 @@ collections:
 ```
 
 ```shell
+# Add -f to force the update
 install.sh
 ```
 
+
 #### For a new release
 
-Create a manual fragment in `changeslogs/fragments` named `DATE_vVERSION_summary.yml` with `release_summary` property.
+First, create a manual fragment in `changeslogs/fragments` named `DATE_vVERSION_summary.yml` with `release_summary` property.
 
-Generate the changelog for the release:
+Then, generate the changelog for the release:
 
 ```shell
 antsibull-changelog release --refresh-fragments --update-existing

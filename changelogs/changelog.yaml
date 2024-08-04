@@ -59,3 +59,16 @@ releases:
     - 2023-05-12_fix_posix_dependency.yml
     - 2023-05-12_v1.0.4_summary.yml
     release_date: '2023-05-12'
+  1.1.0:
+    changes:
+      major_changes:
+      - prompt_password - support Windows
+      release_summary: '| Release Date: 2024-08-04
+
+        | prompt_password - support Windows
+
+        '
+    fragments:
+    - 2024-08-04_prompt_password_support_windows.yml
+    - 2024-08-04_v1.1.0_summary.yml
+    release_date: '2024-08-04'

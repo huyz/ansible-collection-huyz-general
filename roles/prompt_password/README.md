@@ -6,6 +6,8 @@ Prompts for the `ansible_password` if not defined, with the option to also set t
 
 This avoids the need to call `ansible-playbook` with `--ask-pass` and `--ask-become-pass`.
 
+This works when `ansible_become_method` is set to `sudo` or, for Windows, `ansible.builtin.runas`.
+
 ## Installation
 
 This repo uses the FQCN convention.
