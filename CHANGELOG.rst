@@ -5,6 +5,21 @@ huyz.general Release Notes
 .. contents:: Topics
 
 
+v1.1.1
+======
+
+Release Summary
+---------------
+
+| Release Date: 2024-08-05
+| prompt_password - fix for non-Windows
+
+
+Major Changes
+-------------
+
+- prompt_password - fix for non-Windows
+
 v1.1.0
 ======
 

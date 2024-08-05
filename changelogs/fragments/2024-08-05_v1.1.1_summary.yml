@@ -1,0 +1,3 @@
+release_summary: |
+  | Release Date: 2024-08-05
+  | prompt_password - fix for non-Windows
