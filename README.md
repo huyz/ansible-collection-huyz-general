@@ -47,9 +47,9 @@ Update the `title` and set `keep_fragments: true`.
 
 #### After each change
 
-Create a manual fragments in `changeslogs/fragments`.
+First, create a manual fragments in `changeslogs/fragments`.
 
-To lint the fragments:
+Then, to lint the fragments:
 
 ```shell
 antsibull-changelog lint
@@ -70,14 +70,16 @@ collections:
 ```
 
 ```shell
+# Add -f to force the update
 install.sh
 ```
 
+
 #### For a new release
 
-Create a manual fragment in `changeslogs/fragments` named `DATE_vVERSION_summary.yml` with `release_summary` property.
+First, create a manual fragment in `changeslogs/fragments` named `DATE_vVERSION_summary.yml` with `release_summary` property.
 
-Generate the changelog for the release:
+Then, generate the changelog for the release:
 
 ```shell
 antsibull-changelog release --refresh-fragments --update-existing
@@ -117,7 +119,7 @@ Typically:
     1. Uncheck `Set as a pre-release`
     1. Check `Set as the latest release`
 
-Note that the "Publish on Galaxy" action can be triggered manually on githubl.com
+Note that the "Publish on Galaxy" action can be triggered manually on github.com
 
 To manually trigger a "Galaxy release" at the command line:
 
@@ -134,6 +136,6 @@ MIT
 [badge-license]: https://img.shields.io/github/license/huyz/ansible-collection-huyz-general
 [link-license]: https://github.com/huyz/ansible-collection-huyz-general/blob/master/LICENSE
 [badge-collection]: https://img.shields.io/badge/collection-huyz.general-blue
-[link-galaxy]: https://galaxy.ansible.com/huyz/general
+[link-galaxy]: https://galaxy.ansible.com/ui/repo/published/huyz/general/
 [badge-gh-actions]: https://github.com/huyz/ansible-collection-huyz-general/actions/workflows/ansible-molecule.yml/badge.svg?event=push
 [link-gh-actions]: https://github.com/huyz/ansible-collection-huyz-general/actions/workflows/ansible-molecule.yml

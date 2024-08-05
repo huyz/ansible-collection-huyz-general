@@ -5,6 +5,21 @@ huyz.general Release Notes
 .. contents:: Topics
 
 
+v1.1.0
+======
+
+Release Summary
+---------------
+
+| Release Date: 2024-08-04
+| prompt_password - support Windows
+
+
+Major Changes
+-------------
+
+- prompt_password - support Windows
+
 v1.0.4
 ======
 

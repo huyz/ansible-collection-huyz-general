@@ -32,4 +32,10 @@
   ansible.builtin.command: '/usr/bin/true'
   changed_when: false
   become: true
-  when: password_prompt.user_input is defined
+  when: password_prompt.user_input is defined and ansible_become_method == 'sudo'
+
+- name: WIN_SHELL | Test the password for fail-fast
+  ansible.windows.win_command: "cmd.exe /c rem"
+  changed_when: false
+  become: true
+  when: password_prompt.user_input is defined and ansible_become_method == 'ansible.builtin.runas'
