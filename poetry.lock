@@ -112,13 +112,13 @@ test = ["black", "coverage-enable-subprocess", "coverage[toml] (>=6.4.4)", "jmes
 
 [[package]]
 name = "antsibull-changelog"
-version = "0.30.0"
+version = "0.31.1"
 description = "Changelog tool for Ansible-core and Ansible collections"
 optional = false
 python-versions = ">=3.9.0"
 files = [
-    {file = "antsibull_changelog-0.30.0-py3-none-any.whl", hash = "sha256:5ae38c10366d5226e5358ee3265e5dddde0b1b36e45970429e4ce3186f178426"},
-    {file = "antsibull_changelog-0.30.0.tar.gz", hash = "sha256:37660a748cf2597ba9cdf26172ceac87ca5c227e693f50b4592da71c45c0bb74"},
+    {file = "antsibull_changelog-0.31.1-py3-none-any.whl", hash = "sha256:4b51878ee037199e42e5212b53122e4a4ccc997a783bb73496f41c7238c452e7"},
+    {file = "antsibull_changelog-0.31.1.tar.gz", hash = "sha256:e76fcc49969c29ae7b8615e7ea2b4ac275a19ff3afbf3d665f1457ab12493f84"},
 ]
 
 [package.dependencies]
@@ -1774,4 +1774,4 @@ test = ["big-O", "importlib-resources", "jaraco.functools", "jaraco.itertools", 
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11.1"
-content-hash = "a8f1835696208fab76e391a3a6f1ecbbe0f6cfc755ab24de397fff6dd1ae501e"
+content-hash = "3ca6cfed69c861138ec9c39a2e2d3e31530fe125452fa0fd08ece0710be5f93f"

@@ -12,7 +12,7 @@ ansible = "^9.6.0"
 distlib = "^0.3.8"
 
 [tool.poetry.group.dev.dependencies]
-antsibull-changelog = "^0.30.0"
+antsibull-changelog = "^0.31.1"
 pre-commit = "^3.8.0"
 # Avoid the dumb, irrelevant ansible-lint error
 #   https://github.com/ansible/ansible-lint/discussions/2820
