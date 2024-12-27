@@ -77,7 +77,9 @@ install.sh
 
 #### For a new release
 
-First, create a manual fragment in `changeslogs/fragments` named `DATE_vVERSION_summary.yml` with `release_summary` property.
+Update `version` field in `galaxy.yml`.
+
+If you haven't already, create a manual fragment in `changeslogs/fragments` named `DATE_vVERSION_summary.yml` with `release_summary` property.
 
 Then, generate the changelog for the release:
 

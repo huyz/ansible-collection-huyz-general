@@ -4,6 +4,19 @@ huyz.general Release Notes
 
 .. contents:: Topics
 
+v1.1.2
+======
+
+Release Summary
+---------------
+
+| Release Date: 2024-12-27
+| prompt_password - specify Powershell executable for win_shell
+
+Bugfixes
+--------
+
+- prompt_password - specify Powershell executable for win_shell
 
 v1.1.1
 ======
@@ -13,7 +26,6 @@ Release Summary
 
 | Release Date: 2024-08-05
 | prompt_password - fix for non-Windows
-
 
 Major Changes
 -------------
@@ -29,7 +41,6 @@ Release Summary
 | Release Date: 2024-08-04
 | prompt_password - support Windows
 
-
 Major Changes
 -------------
 
@@ -44,7 +55,6 @@ Release Summary
 | Release Date: 2023-05-12
 | Fix collection dependencies, ansible-lint, Makefile
 | Upgrade Ansible version to 2.14.5 and other Python dependencies
-
 
 Major Changes
 -------------
@@ -75,7 +85,6 @@ Release Summary
 | Initial release of the password_prompt role
 | Initial release of the sudo_by_ssh_agent role
 
-
 Major Changes
 -------------
 
@@ -90,7 +99,6 @@ Release Summary
 
 | Release Date: 2023-02-25
 | Initial release, containing the add_to_config_file role
-
 
 Major Changes
 -------------

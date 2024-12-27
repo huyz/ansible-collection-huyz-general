@@ -35,7 +35,9 @@
   when: password_prompt.user_input is defined and (ansible_become_method | d('sudo')) == 'sudo'
 
 - name: WIN_SHELL | Test the password for fail-fast
-  ansible.windows.win_command: "cmd.exe /c rem"
+  ansible.windows.win_shell: whoami.exe
+  args:
+    executable: powershell
   changed_when: false
   become: true
   when: password_prompt.user_input is defined and (ansible_become_method | d('sudo')) == 'ansible.builtin.runas'

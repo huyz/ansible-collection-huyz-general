@@ -85,3 +85,16 @@ releases:
     - 2024-08-05_prompt_password_fix_non_windows.yml
     - 2024-08-05_v1.1.1_summary.yml
     release_date: '2024-08-05'
+  1.1.2:
+    changes:
+      bugfixes:
+      - prompt_password - specify Powershell executable for win_shell
+      release_summary: '| Release Date: 2024-12-27
+
+        | prompt_password - specify Powershell executable for win_shell
+
+        '
+    fragments:
+    - 2024-12-27_prompt_password_fix_winshell_exeecutable.yml
+    - 2024-12-27_v1.1.2_summary.yml
+    release_date: '2024-12-27'

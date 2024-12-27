@@ -1,0 +1,3 @@
+release_summary: |
+  | Release Date: 2024-12-27
+  | prompt_password - specify Powershell executable for win_shell
