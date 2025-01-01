@@ -23,7 +23,7 @@ ansible-lint = { version = "^24.7.0", markers = "platform_system != 'Windows'" }
 molecule = { version = "^24.9.0" }
 molecule-plugins = { extras = ["docker"], version = "^23.6.0" }
 pytest-testinfra = "^10.1.1"
-pytest-subtests = "^0.13.1"
+pytest-subtests = "^0.14.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
