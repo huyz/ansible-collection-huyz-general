@@ -17,7 +17,7 @@ antsibull-changelog = "^0.31.2"
 pre-commit = "^4.0.1"
 # Avoid the dumb, irrelevant ansible-lint error
 #   https://github.com/ansible/ansible-lint/discussions/2820
-ansible-lint = { version = "^24.7.0", markers = "platform_system != 'Windows'" }
+ansible-lint = { version = "^25.1.1", markers = "platform_system != 'Windows'" }
 # molecule >= 5.0.1 to avoid ansible-compat issue with 4.x
 #   https://github.com/ansible-community/molecule/issues/3903
 molecule = { version = "^25.2.0" }
