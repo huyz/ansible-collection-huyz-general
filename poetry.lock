@@ -905,18 +905,18 @@ testinfra = ["pytest-testinfra (>=8.1.0)"]
 
 [[package]]
 name = "molecule-plugins"
-version = "23.6.0"
+version = "23.7.0"
 description = "Molecule Plugins"
 optional = false
-python-versions = ">=3.9"
+python-versions = ">=3.10"
 files = [
-    {file = "molecule_plugins-23.6.0-py3-none-any.whl", hash = "sha256:be3d15329ede00d79a0a60482e8c78cfbb2d18500ad98319c0c076cb833db340"},
-    {file = "molecule_plugins-23.6.0.tar.gz", hash = "sha256:432586a21226ef72fca5eaafb56ec7c0dc6d5e471f4e1e5272be5425357bcd2c"},
+    {file = "molecule_plugins-23.7.0-py3-none-any.whl", hash = "sha256:5e577231c7d95d7f7dc7146f3527d4692ee30a8c0ea0e8353b15ceba75f7d28e"},
+    {file = "molecule_plugins-23.7.0.tar.gz", hash = "sha256:c28b08e25c91fcc679e65d9d18d2b4bb33712aaed2fefdea72b6253c6bd19635"},
 ]
 
 [package.dependencies]
 docker = {version = ">=4.3.1", optional = true, markers = "extra == \"docker\""}
-molecule = ">=6.0.0a1"
+molecule = ">=25.1.0"
 requests = {version = "*", optional = true, markers = "extra == \"docker\""}
 selinux = {version = "*", optional = true, markers = "(sys_platform == \"linux2\" or sys_platform == \"linux\") and extra == \"docker\""}
 
@@ -925,7 +925,7 @@ docker = ["docker (>=4.3.1)", "requests", "selinux", "selinux"]
 gce = ["google-auth (>=2.28.2)", "requests (>=2.31.0)"]
 openstack = ["openstacksdk (>=1.1.0)"]
 selinux = ["selinux", "selinux"]
-test = ["molecule[test] (>=6.0.0a1)", "pytest-helpers-namespace (>=2019.1.8)"]
+test = ["molecule[test] (>=25.1.0)", "pytest-helpers-namespace (>=2019.1.8)"]
 vagrant = ["python-vagrant"]
 
 [[package]]
@@ -1799,4 +1799,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11.5"
-content-hash = "d50c32565aa830cf32eca475cbda15f8447986d346f0139c89f621fa4cb23bc2"
+content-hash = "fa178f6833964ef9ebb657dc2a84f780fcd35789075cbb3cb3c435a45e1dbd5c"
