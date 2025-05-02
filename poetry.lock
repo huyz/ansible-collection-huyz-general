@@ -88,20 +88,20 @@ resolvelib = ">=0.5.3,<1.1.0"
 
 [[package]]
 name = "ansible-lint"
-version = "25.1.1"
+version = "25.4.0"
 description = "Checks playbooks for practices and behavior that could potentially be improved"
 optional = false
 python-versions = ">=3.10"
 groups = ["dev"]
 markers = "(sys_platform == \"linux2\" or sys_platform == \"linux\" or sys_platform != \"linux2\" and sys_platform != \"linux\") and platform_system != \"Windows\""
 files = [
-    {file = "ansible_lint-25.1.1-py3-none-any.whl", hash = "sha256:a417c04a94640302f73ad5b96ba3f09a77b24861fd5441d04245549cf3dc2ac9"},
-    {file = "ansible_lint-25.1.1.tar.gz", hash = "sha256:52ded593ba69831bf8f2882fea9118f96657f115e75904cac9afe1ea931bf0ab"},
+    {file = "ansible_lint-25.4.0-py3-none-any.whl", hash = "sha256:16644f11dbfc4b52a12a16e2069eab83d089f154c55dd837484e92de7f031244"},
+    {file = "ansible_lint-25.4.0.tar.gz", hash = "sha256:f2f2b31ad199925b2343f660552fb9468970f16c2c5d57da9feae70ec4eeca7d"},
 ]
 
 [package.dependencies]
-ansible-compat = ">=25.1.0"
-ansible-core = ">=2.16.0"
+ansible-compat = ">=25.1.5"
+ansible-core = ">=2.16.11"
 black = ">=24.3.0"
 filelock = ">=3.8.2"
 importlib-metadata = "*"
@@ -109,6 +109,7 @@ jsonschema = ">=4.10.0"
 packaging = ">=22.0"
 pathspec = ">=0.10.3"
 pyyaml = ">=6.0.2"
+referencing = ">=0.36.2"
 "ruamel.yaml" = ">=0.18.5,<0.18.7 || >0.18.7,<0.18.8 || >0.18.8"
 subprocess-tee = ">=0.4.1"
 wcmatch = [
@@ -118,8 +119,8 @@ wcmatch = [
 yamllint = ">=1.34.0"
 
 [package.extras]
-docs = ["mkdocs-ansible (>=24.12.0)", "uv (>=0.5.5)"]
-test = ["black", "coverage-enable-subprocess", "coverage[toml] (>=6.4.4)", "jmespath", "license-expression (>=30.3.0)", "mypy", "netaddr", "pip", "psutil", "pylint", "pytest (>=7.2.2)", "pytest-instafail (>=0.5.0)", "pytest-mock", "pytest-plus (>=0.6)", "pytest-xdist[psutil,setproctitle] (>=2.1.0)", "ruamel-yaml-clib", "ruamel.yaml (>=0.17.31)", "tox (>=4.0.0)", "types-jsonschema", "types-pyyaml"]
+docs = ["mkdocs-ansible (>=24.12.0)"]
+test = ["black", "coverage-enable-subprocess", "coverage[toml] (>=6.4.4)", "ipdb", "ipython", "jmespath", "license-expression (>=30.3.0)", "mypy", "netaddr", "pip", "psutil", "pylint", "pytest (>=7.2.2)", "pytest-instafail (>=0.5.0)", "pytest-mock", "pytest-plus (>=0.6)", "pytest-sugar", "pytest-xdist[psutil,setproctitle] (>=2.1.0)", "ruamel-yaml-clib", "ruamel.yaml (>=0.17.31)", "tox (>=4.0.0)", "tox (>=4.24.2)", "tox-extra (>=2.1)", "tox-uv (>=1.25)", "types-jsonschema", "types-pyyaml"]
 
 [[package]]
 name = "antsibull-changelog"
@@ -545,7 +546,7 @@ description = "Cross-platform colored terminal text."
 optional = false
 python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*,>=2.7"
 groups = ["dev"]
-markers = "(platform_system == \"Windows\" or sys_platform == \"win32\") and (sys_platform == \"linux2\" or sys_platform == \"linux\" or sys_platform == \"win32\" or sys_platform != \"linux2\" and sys_platform != \"linux\")"
+markers = "(sys_platform == \"linux2\" or sys_platform == \"linux\" or sys_platform != \"linux2\" and sys_platform != \"linux\") and (platform_system == \"Windows\" or sys_platform == \"win32\")"
 files = [
     {file = "colorama-0.4.6-py2.py3-none-any.whl", hash = "sha256:4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6"},
     {file = "colorama-0.4.6.tar.gz", hash = "sha256:08695f5cb7ed6e0531a20572697297273c47b8cae5a63ffc6d6ed5c201be6e44"},
@@ -947,19 +948,19 @@ files = [
 
 [[package]]
 name = "molecule"
-version = "25.4.0"
+version = "25.2.0"
 description = "Molecule aids in the development and testing of Ansible roles"
 optional = false
 python-versions = ">=3.10"
 groups = ["dev"]
 markers = "sys_platform == \"linux2\" or sys_platform == \"linux\" or sys_platform != \"linux2\" and sys_platform != \"linux\""
 files = [
-    {file = "molecule-25.4.0-py3-none-any.whl", hash = "sha256:09506acc2af7fa66acab8bb032508dbb282869f372ed034620883f26801e08e3"},
-    {file = "molecule-25.4.0.tar.gz", hash = "sha256:c531e2a1051f827f3878dcd7d40d6d6868da066d461ef28b5e8fedea5e93f0f9"},
+    {file = "molecule-25.2.0-py3-none-any.whl", hash = "sha256:772394855c6511362e5e5312017936975a490b24a6b8fe528ad736842ba3fc0f"},
+    {file = "molecule-25.2.0.tar.gz", hash = "sha256:2f74a31ed03a562c0cb453fe80c2f95a92f663c6104429817c56cb101d903047"},
 ]
 
 [package.dependencies]
-ansible-compat = ">=25.1.4"
+ansible-compat = ">=25.1.0"
 ansible-core = ">=2.15.0"
 click = ">=8.0,<9"
 click-help-colors = "*"
@@ -973,8 +974,8 @@ rich = ">=9.5.1"
 wcmatch = ">=8.1.2"
 
 [package.extras]
-docs = ["linkchecker (>=10.4.0)", "mkdocs-ansible (>=24.3.0)"]
-test = ["ansi2html (>=1.8.0)", "ansible-lint (>=6.12.1)", "black", "coverage[toml]", "docker (>=7.1.0)", "filelock (>=3.9.0)", "mypy", "pexpect (>=4.9.0,<5)", "pre-commit", "pydoclint", "pylint", "pytest", "pytest-instafail", "pytest-mock (>=3.10.0)", "pytest-plus (>=0.7.0)", "pytest-xdist", "requests (!=2.32.0)", "ruff", "toml-sort", "tox", "types-jsonschema", "types-pexpect", "types-pyyaml"]
+docs = ["linkchecker (>=10.4.0)", "mkdocs-ansible (>=24.3.0)", "pipdeptree (>=2.4.0)"]
+test = ["ansi2html (>=1.8.0)", "ansible-lint (>=6.12.1)", "black", "coverage[toml]", "docker (>=7.1.0)", "filelock (>=3.9.0)", "mypy", "pexpect (>=4.9.0,<5)", "pip-tools", "pre-commit", "pydoclint", "pylint", "pytest", "pytest-instafail", "pytest-mock (>=3.10.0)", "pytest-plus (>=0.7.0)", "pytest-xdist", "requests (!=2.32.0)", "ruff", "toml-sort", "tox", "types-jsonschema", "types-pexpect", "types-pyyaml"]
 testinfra = ["pytest-testinfra (>=8.1.0)"]
 
 [[package]]
@@ -1432,20 +1433,21 @@ files = [
 
 [[package]]
 name = "referencing"
-version = "0.35.1"
+version = "0.36.2"
 description = "JSON Referencing + Python"
 optional = false
-python-versions = ">=3.8"
+python-versions = ">=3.9"
 groups = ["dev"]
 markers = "sys_platform == \"linux2\" or sys_platform == \"linux\" or sys_platform != \"linux2\" and sys_platform != \"linux\""
 files = [
-    {file = "referencing-0.35.1-py3-none-any.whl", hash = "sha256:eda6d3234d62814d1c64e305c1331c9a3a6132da475ab6382eaa997b21ee75de"},
-    {file = "referencing-0.35.1.tar.gz", hash = "sha256:25b42124a6c8b632a425174f24087783efb348a6f1e0008e63cd4466fedf703c"},
+    {file = "referencing-0.36.2-py3-none-any.whl", hash = "sha256:e8699adbbf8b5c7de96d8ffa0eb5c158b3beafce084968e2ea8bb08c6794dcd0"},
+    {file = "referencing-0.36.2.tar.gz", hash = "sha256:df2e89862cd09deabbdba16944cc3f10feb6b3e6f18e902f7cc25609a34775aa"},
 ]
 
 [package.dependencies]
 attrs = ">=22.2.0"
 rpds-py = ">=0.7.0"
+typing-extensions = {version = ">=4.4.0", markers = "python_version < \"3.13\""}
 
 [[package]]
 name = "requests"
@@ -1701,7 +1703,7 @@ description = "C version of reader, parser and emitter for ruamel.yaml derived f
 optional = false
 python-versions = ">=3.9"
 groups = ["dev"]
-markers = "platform_python_implementation == \"CPython\" and python_version < \"3.13\" and platform_system != \"Windows\" and (sys_platform == \"linux2\" or sys_platform == \"linux\" or sys_platform != \"linux2\" and sys_platform != \"linux\")"
+markers = "(sys_platform == \"linux2\" or sys_platform == \"linux\" or sys_platform != \"linux2\" and sys_platform != \"linux\") and platform_python_implementation == \"CPython\" and platform_system != \"Windows\" and python_version <= \"3.12\""
 files = [
     {file = "ruamel.yaml.clib-0.2.12-cp310-cp310-macosx_13_0_arm64.whl", hash = "sha256:11f891336688faf5156a36293a9c362bdc7c88f03a8a027c2c1d8e0bcde998e5"},
     {file = "ruamel.yaml.clib-0.2.12-cp310-cp310-manylinux2014_aarch64.whl", hash = "sha256:a606ef75a60ecf3d924613892cc603b154178ee25abb3055db5062da811fd969"},
@@ -1947,4 +1949,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.11.5"
-content-hash = "bf160cbc930267209ef8eb245e2f6bb13fea64ad244e06e5d163d5759a8414fd"
+content-hash = "b8c6529bf010b2cc079c77f626cd37a35cf6734867e301553493755dceebb16a"
