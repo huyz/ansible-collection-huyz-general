@@ -8,7 +8,7 @@ package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.11.5"
-ansible = "^11.5.0"
+ansible = "^11.6.0"
 # For use of `manifest` in galaxy.xml
 distlib = "^0.3.8"
 
@@ -17,12 +17,12 @@ antsibull-changelog = "^0.31.2"
 pre-commit = "^4.2.0"
 # Avoid the dumb, irrelevant ansible-lint error
 #   https://github.com/ansible/ansible-lint/discussions/2820
-ansible-lint = { version = "^25.4.0", markers = "platform_system != 'Windows'" }
+ansible-lint = { version = "^25.1.1", markers = "platform_system != 'Windows'" }
 # molecule >= 5.0.1 to avoid ansible-compat issue with 4.x
 #   https://github.com/ansible-community/molecule/issues/3903
-molecule = { version = "^25.4.0" }
+molecule = { version = "^25.2.0" }
 molecule-plugins = { extras = ["docker"], version = "^23.6.0" }
-pytest-testinfra = "^10.2.2"
+pytest-testinfra = "^10.1.1"
 pytest-subtests = "^0.14.1"
 
 [build-system]
