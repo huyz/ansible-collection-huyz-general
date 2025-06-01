@@ -1317,15 +1317,15 @@ pytest = ">=7.4"
 
 [[package]]
 name = "pytest-testinfra"
-version = "10.1.1"
+version = "10.2.2"
 description = "Test infrastructures"
 optional = false
 python-versions = ">=3.9"
 groups = ["dev"]
 markers = "sys_platform == \"linux2\" or sys_platform == \"linux\" or sys_platform != \"linux2\" and sys_platform != \"linux\""
 files = [
-    {file = "pytest-testinfra-10.1.1.tar.gz", hash = "sha256:a876f1453a01b58d94d9d936dd50344c2c01ac7880a2b41d15bdf233aed9cf1f"},
-    {file = "pytest_testinfra-10.1.1-py3-none-any.whl", hash = "sha256:b990dc7d77b49a1bba24818fbff49b6171d8c46d606fb5ca86b937de690d7062"},
+    {file = "pytest_testinfra-10.2.2-py3-none-any.whl", hash = "sha256:b785602b0aa868c858e4ef121a8cc0d13a81c04b74ec0364d70969540f8e7c31"},
+    {file = "pytest_testinfra-10.2.2.tar.gz", hash = "sha256:537fd5eb88da618c1f461248aa20594cf8d44512e8519b239837e83875e1e9cd"},
 ]
 
 [package.dependencies]
@@ -1333,8 +1333,13 @@ pytest = ">=6"
 
 [package.extras]
 ansible = ["ansible"]
+dev = ["alabaster (>=0.7.2)", "ansible", "distro", "looseversion", "msgpack", "mypy", "paramiko", "pytest-cov", "pytest-xdist", "pywinrm", "ruff", "salt", "sphinx (>=7.1,<7.2)", "tornado", "types-paramiko"]
+doc = ["alabaster (>=0.7.2)", "sphinx (>=7.1,<7.2)"]
+lint = ["ruff"]
 paramiko = ["paramiko"]
-salt = ["salt"]
+salt = ["distro", "looseversion", "msgpack", "salt", "tornado"]
+test = ["ansible", "distro", "looseversion", "msgpack", "paramiko", "pytest-cov", "pytest-xdist", "pywinrm", "salt", "tornado"]
+typing = ["mypy", "types-paramiko"]
 winrm = ["pywinrm"]
 
 [[package]]
@@ -1947,4 +1952,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.11.5"
-content-hash = "e3829695125630e73cb3c14c13199d284daeb06dca23f1b3d19e12a428104208"
+content-hash = "ab13e6403df678f9e7d8311de6f85601ebd7732e06d30e8d394cbf54228cae05"
