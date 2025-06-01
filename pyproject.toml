@@ -22,7 +22,7 @@ ansible-lint = { version = "^25.4.0", markers = "platform_system != 'Windows'" }
 #   https://github.com/ansible-community/molecule/issues/3903
 molecule = { version = "^25.4.0" }
 molecule-plugins = { extras = ["docker"], version = "^23.6.0" }
-pytest-testinfra = "^10.1.1"
+pytest-testinfra = "^10.2.2"
 pytest-subtests = "^0.14.1"
 
 [build-system]
