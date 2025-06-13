@@ -1,11 +1,10 @@
----
 name: Publish on Galaxy
-'on':
+
+on:
+  workflow_dispatch:
   push:
     tags:
       - '*'
-  workflow_dispatch:
-
 
 env:
   WORKING_DIR: ansible_collections/huyz/general

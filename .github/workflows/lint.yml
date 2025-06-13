@@ -2,13 +2,13 @@
 name: Lint
 
 on:
+  workflow_dispatch:
   push:
     branches:
         - master
   pull_request:
   schedule:
     - cron: "10 10 * * SUN"
-  workflow_dispatch:
 
 
 env:
