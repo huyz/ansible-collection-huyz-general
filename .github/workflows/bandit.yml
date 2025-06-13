@@ -34,3 +34,12 @@ jobs:
     steps:
       - name: Perform Bandit Analysis
         uses: PyCQA/bandit-action@v1
+        with:
+          # Exclude directories that are not relevant for this repository
+          # or that are too noisy.
+          # For example, we might want to exclude directories related to tests,
+          # documentation, or other non-production code.
+          # NOTE: `tests` doesn't work. See https://github.com/PyCQA/bandit-action/issues/14
+          exclude: ./tests
+          # B607: Starting a process with a partial executable path
+          skips: "B607,B404"

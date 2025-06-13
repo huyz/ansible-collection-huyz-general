@@ -28,7 +28,7 @@ repos:
       - id: detect-aws-credentials
         args: [--allow-missing-credentials]
       - id: detect-private-key
-      - id: double-quote-string-fixer
+      - id: double-quote-string-fixer # WARNING: this conflicts with `ruff format`
       - id: end-of-file-fixer
       - id: fix-byte-order-marker
       - id: forbid-new-submodules
@@ -40,12 +40,6 @@ repos:
       - id: requirements-txt-fixer
       - id: trailing-whitespace
 
-
-  - repo: https://github.com/jumanjihouse/pre-commit-hooks
-    rev: 3.0.0
-    hooks:
-      - id: shellcheck
-        exclude: ^.*/files/.*$
 
   - repo: https://github.com/koalaman/shellcheck-precommit
     rev: v0.10.0
@@ -71,3 +65,7 @@ repos:
           - '--nocolor'
           - '--profile=production'
         stages: [pre-push, pre-merge-commit]
+
+ci:
+  # 2025-06-13 Shellcheck gives: Executable `docker` not found
+  skip: [shellcheck]

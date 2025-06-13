@@ -28,6 +28,10 @@ jobs:
 
       - name: Run DevSkim scanner
         uses: microsoft/DevSkim-Action@v1
+        with:
+          #  "DS176209",  # A "TODO" or similar was left in source code, possibly indicating incomplete functionality
+          exclude-rules: "DS176209"
+          ignore-globs: "**/tests/**"
 
       - name: Upload DevSkim scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v3
