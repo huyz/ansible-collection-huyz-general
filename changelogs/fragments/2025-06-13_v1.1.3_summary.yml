@@ -1,0 +1,4 @@
+release_summary: |
+  | Release Date: 2025-06-13
+  | Update dependencies and pre-commit hooks
+  | Simplify testing

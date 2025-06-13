@@ -9,8 +9,6 @@ exclude_paths:
     ## My own directories
 
     - +Archived/
-    # XXX Temp: 2023-02-25
-    - roles/huyz/
     # XXX Temp: 2023-05-11
     - roles/add_to_config_file/molecule/OFF/
 

@@ -4,6 +4,28 @@ huyz.general Release Notes
 
 .. contents:: Topics
 
+v1.1.3
+======
+
+Release Summary
+---------------
+
+| Release Date: 2025-06-13
+| Update dependencies and pre-commit hooks
+| Simplify testing
+
+Minor Changes
+-------------
+
+- Add more pre-commit hooks
+- In top-level Makefile, `make test` invokes `make test` in `roles/`
+- Update README.md to mention testing
+
+Bugfixes
+--------
+
+- Bump up all dependencies
+
 v1.1.2
 ======
 

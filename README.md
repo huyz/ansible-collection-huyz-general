@@ -25,6 +25,8 @@ Roles:
 
 ## Development (of this repo)
 
+### Initializing
+
 1. Set `ANSIBLE_GALAXY_API_KEY` in `.env`
 
 1. Run
@@ -33,7 +35,21 @@ Roles:
     direnv allow
     ```
 
-### How to update the Changelog
+### Testing
+
+```shell
+make test
+```
+
+### Linting
+
+First, stage your changes, then:
+
+```shell
+pre-commit run -v
+```
+
+### Updating the Changelog
 
 #### First time setup
 
@@ -74,7 +90,6 @@ collections:
 install.sh
 ```
 
-
 #### For a new release
 
 Update `version` field in `galaxy.yml`.
@@ -85,14 +100,6 @@ Then, generate the changelog for the release:
 
 ```shell
 antsibull-changelog release --refresh-fragments --update-existing
-```
-
-### How to lint
-
-First, stage your changes, then:
-
-```shell
-pre-commit run -v
 ```
 
 ### Overview of GitHub Actions
@@ -107,7 +114,7 @@ pre-commit run -v
     - Triggered by new tags
     - Builds collection and publishes it to Ansible Galaxy
 
-### How to publish on Ansible Galaxy
+### Publishing on Ansible Galaxy
 
 Typically:
 

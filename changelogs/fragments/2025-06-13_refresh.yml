@@ -1,0 +1,7 @@
+bugfixes:
+  - Bump up all dependencies
+
+minor_changes:
+  - Add more pre-commit hooks
+  - In top-level Makefile, `make test` invokes `make test` in `roles/`
+  - Update README.md to mention testing

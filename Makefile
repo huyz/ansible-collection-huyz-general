@@ -32,10 +32,17 @@ all: test publish
 
 
 # Skip shell scripts and/or executables in bin/
-# XXX Temp: Skip roles in huyz/*
 .PHONY: test
 test:
-	ansible-test sanity --docker default -v --exclude '.*\.sh$$' --exclude 'roles/huyz/*'
+	ansible-test sanity --docker default -v --exclude '.*\.sh$$'
+
+	@echo
+	@for i in roles/*; do \
+		if [ -e "$$i/Makefile" ]; then \
+			echo "Running tests in $$i" ; \
+			make -C "$$i" test ; \
+		fi ; \
+	done
 
 
 # Running `ansible-test sanity --docker default -v` may give this error:
