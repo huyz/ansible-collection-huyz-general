@@ -41,7 +41,7 @@ jobs:
     runs-on: ubuntu-latest
     # See https://github.com/snyk/actions/blob/master/python/README.md
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Run Snyk to check configuration files for security issues
         uses: snyk/actions/python@master
         # Snyk can be used to break the build when it detects security issues.

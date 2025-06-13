@@ -27,14 +27,14 @@ jobs:
         run: echo "changed_all=true" >> "$GITHUB_ENV"
 
       # NOTE: code needs to be checked out to even get at .github/paths-filter.yml
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Install dependency manager
         run: pipx install poetry
 
       - name: Set up Python 3.x
         id: setup-python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11.1'   # avoid warning in logs
           cache: 'poetry'
@@ -45,7 +45,7 @@ jobs:
       - name: Check for changes in relevant files
         id: changes
         if: env.changed_all != 'true'
-        uses: dorny/paths-filter@v2
+        uses: dorny/paths-filter@v3
         with:
           filters: .github/paths-filter.yml
 
@@ -59,7 +59,7 @@ jobs:
       - name: Get listing of changed Ansible files
         id: ansible-files
         if: env.changed_all != 'true' && steps.changes.outputs.ansible == 'true'
-        uses: dorny/paths-filter@v2
+        uses: dorny/paths-filter@v3
         with:
           # Enable listing of files matching each filter.
           # Paths to files will be available in `${FILTER_NAME}_files` output variable.
@@ -89,7 +89,7 @@ jobs:
       - name: Get listing of changed GitHub Action files
         id: action-files
         if: env.changed_all != 'true' && steps.changes.outputs.github_actions == 'true'
-        uses: dorny/paths-filter@v2
+        uses: dorny/paths-filter@v3
         with:
           # Enable listing of files matching each filter.
           # Paths to files will be available in `${FILTER_NAME}_files` output variable.

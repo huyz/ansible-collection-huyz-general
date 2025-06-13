@@ -14,6 +14,7 @@ repos:
       - id: check-added-large-files
       - id: check-ast
       - id: check-case-conflict
+      - id: check-docstring-first
       - id: check-executables-have-shebangs
       - id: check-json
       - id: check-merge-conflict
@@ -27,12 +28,16 @@ repos:
       - id: detect-aws-credentials
         args: [--allow-missing-credentials]
       - id: detect-private-key
+      - id: double-quote-string-fixer
       - id: end-of-file-fixer
+      - id: fix-byte-order-marker
+      - id: forbid-new-submodules
       - id: mixed-line-ending
       - id: name-tests-test
         args: [--pytest-test-first]
       #- id: pretty-format-json
       #  args: [--no-ensure-ascii, --no-sort-keys]
+      - id: requirements-txt-fixer
       - id: trailing-whitespace
 
 
@@ -42,13 +47,19 @@ repos:
       - id: shellcheck
         exclude: ^.*/files/.*$
 
-  - repo: https://github.com/hollow/pre-commit-actionlint
-    rev: v1.6.24
+  - repo: https://github.com/koalaman/shellcheck-precommit
+    rev: v0.10.0
+    hooks:
+      - id: shellcheck
+        #args: ["--severity=warning"]  # Optionally only show errors and warnings
+
+  - repo: https://github.com/rhysd/actionlint
+    rev: v1.7.7
     hooks:
       - id: actionlint
 
   - repo: https://github.com/ansible/ansible-lint
-    rev: v25.2.1
+    rev: v25.5.0
     hooks:
       - id: ansible-lint
         # galaxy.yml uses manifest, which means we need the `distlib` dependency.

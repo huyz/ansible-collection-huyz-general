@@ -1,3 +1,5 @@
+#shellcheck shell=bash
+
     # This is to handle direct installation (as opposed to Homebrew)
     export PYENV_ROOT=~/.pyenv
     command -v pyenv &>/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"

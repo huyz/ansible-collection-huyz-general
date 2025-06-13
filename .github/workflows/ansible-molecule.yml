@@ -22,7 +22,7 @@ jobs:
       needs_run: ${{ steps.check-event.outputs.changed_all == 'true' || steps.changes.outputs.ansible == 'true' }}
     steps:
       # NOTE: code needs to be checked out to even get at .github/paths-filter.yml
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # TODO: is there an easier way to do this?
       - name: Determine if we apply to all files
@@ -33,7 +33,7 @@ jobs:
       - name: Check for changes in relevant files
         id: changes
         if: steps.check-event.outputs.changed_all != 'true'
-        uses: dorny/paths-filter@v2
+        uses: dorny/paths-filter@v3
         with:
           filters: .github/paths-filter.yml
 
@@ -70,14 +70,14 @@ jobs:
           - add_to_config_file
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Install poetry
         run: pipx install poetry
 
       - name: Set up Python 3.x
         id: setup-python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11.1'   # avoid warning in logs
           cache: 'poetry'

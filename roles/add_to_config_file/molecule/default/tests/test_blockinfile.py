@@ -1,6 +1,6 @@
 import re
 
-SENTINEL = "BEGIN ANSIBLE MANAGED BLOCK: pyenv"
+SENTINEL = 'BEGIN ANSIBLE MANAGED BLOCK: pyenv'
 
 # These are the files that we expect to remain unchanged
 UNCHANGED_CONFIG_FILES_RE = re.compile(r'.*(common_pyenv_init|unmarked_block).*')
