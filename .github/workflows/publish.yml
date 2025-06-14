@@ -1,4 +1,4 @@
-name: Publish on Galaxy
+name: Publish to Galaxy
 
 permissions:
   contents: read

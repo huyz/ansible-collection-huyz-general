@@ -1,8 +1,19 @@
 # Ansible Collection: huyz.general
 
 [![MIT licensed][badge-license]][link-license]
-[![Galaxy Collection][badge-collection]][link-galaxy]
-[![CI][badge-gh-actions]][link-gh-actions]
+[![Galaxy Collection][badge-galaxy]][link-galaxy]
+
+[![Run Molecule][badge-molecule]][link-molecule]
+[![Run Linting](https://github.com/huyz/ansible-collection-huyz-general/actions/workflows/lint.yml/badge.svg)](https://github.com/huyz/ansible-collection-huyz-general/actions/workflows/lint.yml)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/huyz/ansible-collection-huyz-general/master.svg)](https://results.pre-commit.ci/latest/github/huyz/ansible-collection-huyz-general/master)
+
+[![Bandit](https://github.com/huyz/ansible-collection-huyz-general/actions/workflows/bandit.yml/badge.svg)](https://github.com/huyz/ansible-collection-huyz-general/actions/workflows/bandit.yml)
+[![CodeQL](https://github.com/huyz/ansible-collection-huyz-general/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/huyz/ansible-collection-huyz-general/actions/workflows/github-code-scanning/codeql)
+[![DevSkim](https://github.com/huyz/ansible-collection-huyz-general/actions/workflows/devskim.yml/badge.svg)](https://github.com/huyz/ansible-collection-huyz-general/actions/workflows/devskim.yml)
+[![Snyk Python](https://github.com/huyz/ansible-collection-huyz-general/actions/workflows/snyk-python.yml/badge.svg)](https://github.com/huyz/ansible-collection-huyz-general/actions/workflows/snyk-python.yml)
+[![SonarCloud](https://github.com/huyz/ansible-collection-huyz-general/actions/workflows/sonarcloud.yml/badge.svg)](https://github.com/huyz/ansible-collection-huyz-general/actions/workflows/sonarcloud.yml)
+[![Dependency Review](https://github.com/huyz/ansible-collection-huyz-general/actions/workflows/dependency-review.yml/badge.svg)](https://github.com/huyz/ansible-collection-huyz-general/actions/workflows/dependency-review.yml)
+[![Dependabot Updates](https://github.com/huyz/ansible-collection-huyz-general/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/huyz/ansible-collection-huyz-general/actions/workflows/dependabot/dependabot-updates)
 
 This Ansible collection contains roles for general use.
 
@@ -144,7 +155,7 @@ MIT
 
 [badge-license]: https://img.shields.io/github/license/huyz/ansible-collection-huyz-general
 [link-license]: https://github.com/huyz/ansible-collection-huyz-general/blob/master/LICENSE
-[badge-collection]: https://img.shields.io/badge/collection-huyz.general-blue
+[badge-galaxy]: https://img.shields.io/badge/collection-huyz.general-blue
 [link-galaxy]: https://galaxy.ansible.com/ui/repo/published/huyz/general/
-[badge-gh-actions]: https://github.com/huyz/ansible-collection-huyz-general/actions/workflows/ansible-molecule.yml/badge.svg?event=push
-[link-gh-actions]: https://github.com/huyz/ansible-collection-huyz-general/actions/workflows/ansible-molecule.yml
+[badge-molecule]: https://github.com/huyz/ansible-collection-huyz-general/actions/workflows/ansible-molecule.yml/badge.svg?event=push
+[link-molecule]: https://github.com/huyz/ansible-collection-huyz-general/actions/workflows/ansible-molecule.yml

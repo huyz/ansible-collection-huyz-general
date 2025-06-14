@@ -1,4 +1,4 @@
-name: Ansible Molecule
+name: Run Molecule
 
 permissions:
   contents: read
@@ -11,7 +11,7 @@ on:
         - master
   pull_request:
   schedule:
-    - cron: "10 10 * * SUN"
+    - cron: "20 10 * * SUN"
 
 env:
   # https://www.jeffgeerling.com/blog/2020/getting-colorized-output-molecule-and-ansible-on-github-actions-ci
@@ -24,8 +24,10 @@ jobs:
     outputs:
       needs_run: ${{ steps.check-event.outputs.changed_all == 'true' || steps.changes.outputs.ansible == 'true' }}
     steps:
-      # NOTE: code needs to be checked out to even get at .github/paths-filter.yml
-      - uses: actions/checkout@v4
+      - name: Checkout code, including .github/paths-filter.yml
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
 
       # TODO: is there an easier way to do this?
       - name: Determine if we apply to all files

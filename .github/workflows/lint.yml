@@ -1,4 +1,4 @@
-name: Lint
+name: Run Linting
 
 permissions:
   contents: read
@@ -29,8 +29,10 @@ jobs:
         if: contains(fromJSON('["schedule", "workflow_dispatch"]'), github.event_name)
         run: echo "changed_all=true" >> "$GITHUB_ENV"
 
-      # Code needs to be checked out to even get at .github/paths-filter.yml
-      - uses: actions/checkout@v4
+      - name: Checkout code, including .github/paths-filter.yml
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
 
       - name: Install dependency manager
         run: pipx install poetry
