@@ -110,8 +110,23 @@ releases:
 
         | Update dependencies and pre-commit hooks
 
-        | Simplify testing'
+        | Simplify testing
+
+        '
     fragments:
     - 2025-06-13_refresh.yml
     - 2025-06-13_v1.1.3_summary.yml
     release_date: '2025-06-13'
+  1.1.4:
+    changes:
+      bugfixes:
+      - prompt_password - handle `__omit_place_holder_` leaky abstraction
+      release_summary: '| Release Date: 2025-09-23
+
+        | prompt_password - fix to handle `omit` placeholder
+
+        '
+    fragments:
+    - 2025-09-23_prompt_password_fix_omit_placeholder.yml
+    - 2025-09-23_v1.1.4_summary.yml
+    release_date: '2025-09-23'

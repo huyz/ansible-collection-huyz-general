@@ -4,6 +4,20 @@ huyz.general Release Notes
 
 .. contents:: Topics
 
+v1.1.4
+======
+
+Release Summary
+---------------
+
+| Release Date: 2025-09-23
+| prompt_password - fix to handle `omit` placeholder
+
+Bugfixes
+--------
+
+- prompt_password - handle `__omit_place_holder_` leaky abstraction
+
 v1.1.3
 ======
 
