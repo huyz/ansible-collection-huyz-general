@@ -71,8 +71,8 @@ jobs:
           args: >
             -Dsonar.organization=huyz
             -Dsonar.projectKey=huyz_ansible-collection-huyz-general
-            #-Dsonar.python.coverage.reportPaths=coverage.xml
-            #-Dsonar.sources=src/
-            #-Dsonar.tests=tests/
-            #-Dsonar.test.exclusions=tests/**
-            #-Dsonar.verbose=true
+          #  -Dsonar.python.coverage.reportPaths=coverage.xml
+          #  -Dsonar.sources=src/
+          #  -Dsonar.tests=tests/
+          #  -Dsonar.test.exclusions=tests/**
+          #  -Dsonar.verbose=true
