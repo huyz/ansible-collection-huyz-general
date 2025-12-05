@@ -8,7 +8,7 @@ package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.11.5"
-ansible = "^11.6.0"
+ansible = "^12.0.0"
 # For use of `manifest` in galaxy.xml
 distlib = "^0.3.8"
 
