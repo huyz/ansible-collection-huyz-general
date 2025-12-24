@@ -21,7 +21,7 @@ ansible-lint = { version = "^25.5.0", markers = "platform_system != 'Windows'" }
 # molecule >= 5.0.1 to avoid ansible-compat issue with 4.x
 #   https://github.com/ansible-community/molecule/issues/3903
 molecule = { version = "^25.12.0" }
-molecule-plugins = { extras = ["docker"], version = "^23.7.0" }
+molecule-plugins = { extras = ["docker"], version = "^25.8.12" }
 pytest-testinfra = "^10.1.1"
 pytest-subtests = "^0.15.0"
 
