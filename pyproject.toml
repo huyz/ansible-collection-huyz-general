@@ -7,7 +7,7 @@ license = "MIT"
 package-mode = false
 
 [tool.poetry.dependencies]
-python = "^3.11.5"
+python = "^3.13.11"
 ansible = "^12.3.0"
 # For use of `manifest` in galaxy.xml
 distlib = "^0.3.8"

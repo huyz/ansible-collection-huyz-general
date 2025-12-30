@@ -84,7 +84,7 @@ jobs:
         id: setup-python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11.5'   # avoid warning in logs
+          python-version: '3.13.11'   # avoid warning in logs
           cache: 'poetry'
 
       - name: Poetry install packages
