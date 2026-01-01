@@ -10,7 +10,7 @@ package-mode = false
 python = "^3.13.11"
 ansible = "^12.3.0"
 # For use of `manifest` in galaxy.xml
-distlib = "^0.3.8"
+distlib = "^0.4.0"
 
 [tool.poetry.group.dev.dependencies]
 antsibull-changelog = "^0.34.0"
