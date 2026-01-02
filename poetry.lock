@@ -26,18 +26,18 @@ files = [
 
 [[package]]
 name = "ansible"
-version = "12.3.0"
+version = "13.2.0"
 description = "Radically simple IT automation"
 optional = false
-python-versions = ">=3.11"
+python-versions = ">=3.12"
 groups = ["main"]
 files = [
-    {file = "ansible-12.3.0-py3-none-any.whl", hash = "sha256:cd156f82fa87f7a899212b0efa9f7ca3a24d609212de9f78428a572eb01e5414"},
-    {file = "ansible-12.3.0.tar.gz", hash = "sha256:02721f6fb432ddd47f1044ac49b04b5e9ae08890bd427def8df3db1607aeec51"},
+    {file = "ansible-13.2.0-py3-none-any.whl", hash = "sha256:8a7f536542d4b18118200b8eaba40aa62ed990bd0e7b7622368b656b67db056f"},
+    {file = "ansible-13.2.0.tar.gz", hash = "sha256:fac46e202d1020027341659918b39e588dd7c43cef26537d7ca7fe51c324fe31"},
 ]
 
 [package.dependencies]
-ansible-core = ">=2.19.5,<2.20.0"
+ansible-core = ">=2.20.1,<2.21.0"
 
 [[package]]
 name = "ansible-compat"
@@ -60,14 +60,14 @@ subprocess-tee = ">=0.4.1"
 
 [[package]]
 name = "ansible-core"
-version = "2.19.5"
+version = "2.20.1"
 description = "Radically simple IT automation"
 optional = false
-python-versions = ">=3.11"
+python-versions = ">=3.12"
 groups = ["main", "dev"]
 files = [
-    {file = "ansible_core-2.19.5-py3-none-any.whl", hash = "sha256:7fa6c052bad2c294284b960d240b4cd227060fd2e3836d381db44d2bcfcdf4b7"},
-    {file = "ansible_core-2.19.5.tar.gz", hash = "sha256:d03660ff32ba8a5ae40a82148cb24b38a35d26c0155621ddd9148b7562fd8be2"},
+    {file = "ansible_core-2.20.1-py3-none-any.whl", hash = "sha256:2a66825b4a53f130b62515e7e2a3d811d544b19b6e8a22d9ef88c55896384cb3"},
+    {file = "ansible_core-2.20.1.tar.gz", hash = "sha256:a891e5f90cd46626778f0f3d545ec1115840c9b50e8adf25944c5e1748452106"},
 ]
 
 [package.dependencies]
@@ -75,7 +75,7 @@ cryptography = "*"
 jinja2 = ">=3.1.0"
 packaging = "*"
 PyYAML = ">=5.1"
-resolvelib = ">=0.5.3,<2.0.0"
+resolvelib = ">=0.8.0,<2.0.0"
 
 [[package]]
 name = "ansible-lint"
@@ -2007,4 +2007,4 @@ dev = ["doc8", "flake8", "flake8-import-order", "rstcheck[sphinx]", "sphinx"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.13.11"
-content-hash = "2fe01e3a5b5d3c545f67cfb856d7692a25ef382b8f77732a73c24800092d2ba1"
+content-hash = "f33b45c16af99beaecd605545603f57b14644ef1351608674922bdf7c27d3eda"
