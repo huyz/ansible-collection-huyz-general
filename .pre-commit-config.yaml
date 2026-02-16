@@ -48,7 +48,7 @@ repos:
         #args: ["--severity=warning"]  # Optionally only show errors and warnings
 
   - repo: https://github.com/rhysd/actionlint
-    rev: v1.7.10
+    rev: v1.7.11
     hooks:
       - id: actionlint
 
