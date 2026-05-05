@@ -2,6 +2,9 @@
 #files: ^roles/add_to_config_file/
 #exclude: .*/OFF/.*
 
+default_language_version:
+  python: python3.13
+
 default_install_hook_types:
   - pre-commit
   - post-merge
