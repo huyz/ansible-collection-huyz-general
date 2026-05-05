@@ -58,8 +58,10 @@ jobs:
         if: env.changed_all == 'true' || steps.changes.outputs.all == 'true'
         # TODO: how do we make the version of pre-commit match pyproject.toml
         run: |
-          pip install pre-commit
-          pre-commit install --install-hooks
+          python -m pip install pre-commit
+          python -m pre_commit install --install-hooks
+        env:
+          PYTHON: python3.13
 
       - name: Get listing of changed Ansible files
         id: ansible-files
