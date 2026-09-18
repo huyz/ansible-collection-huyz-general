@@ -1,7 +1,12 @@
 exclude_paths:
     - .cache/
+    - .claude/
+    - .codex/
     - .github/
+    - .jj/
+    - .junie/
     - .idea/
+    - .venv/
     - .vscode/
     - venv/
     - files/
