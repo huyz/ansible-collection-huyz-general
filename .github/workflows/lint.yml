@@ -43,7 +43,7 @@ jobs:
         id: setup-python
         uses: actions/setup-python@v7
         with:
-          python-version: '3.13.11'   # avoid warning in logs
+          python-version-file: '.python-version'
 
       - name: Install packages
         env:
