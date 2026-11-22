@@ -30,7 +30,7 @@ jobs:
         run: echo "changed_all=true" >> "$GITHUB_ENV"
 
       - name: Checkout code, including .github/paths-filter.yml
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 1
 
