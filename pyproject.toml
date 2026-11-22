@@ -7,6 +7,8 @@ license = "MIT"
 # ansible v13 (EOL in Jun 2026) → ansible-core v2.20 → python 3.12 - 3.14
 requires-python = ">=3.12,<4.0"
 dependencies = [
+    # TIP: if the minimum is updated here, don't forget to also update requires_ansible and
+    #   min_ansible_version in Ansible config files
     "ansible>=13.0",
     # For use of `manifest` in galaxy.xml
     "distlib>=0.4.0,<0.5.0",
