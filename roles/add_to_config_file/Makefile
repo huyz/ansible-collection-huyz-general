@@ -38,7 +38,7 @@ all: lint test
 .PHONY: install
 install:
 	uv sync --all-groups
-	uv run pre-commit install --install-hooks
+	uv run --locked pre-commit install --install-hooks
 
 .PHONY: clean
 clean:
@@ -48,7 +48,7 @@ clean:
 update:
 	uv lock --upgrade
 	uv sync --all-groups
-	uv run pre-commit autoupdate
+	uv run --locked pre-commit autoupdate
 
 
 ##############################################################################
@@ -56,7 +56,7 @@ update:
 
 .PHONY: lint
 lint:
-	uv run ansible-lint --profile=production
+	uv run --locked ansible-lint --profile=production
 
 ##############################################################################
 # Molecule targets (all for the default distro)
@@ -64,27 +64,27 @@ lint:
 .PHONY: create
 create:
 	@echo "Running for distro: $(MOL_DISTRO)"
-	uv run molecule create
+	uv run --locked molecule create
 
 .PHONY: converge
 converge:
 	@echo "Running for distro: $(MOL_DISTRO)"
-	uv run molecule converge
+	uv run --locked molecule converge
 
 .PHONY: verify
 verify:
 	@echo "Running for distro: $(MOL_DISTRO)"
-	uv run molecule verify
+	uv run --locked molecule verify
 
 .PHONY: login
 login:
 	@echo "Running for distro: $(MOL_DISTRO)"
-	uv run molecule login
+	uv run --locked molecule login
 
 .PHONY: destroy
 destroy:
 	@echo "Running for distro: $(MOL_DISTRO)"
-	uv run molecule destroy
+	uv run --locked molecule destroy
 
 ##############################################################################
 # Test targets
@@ -107,19 +107,19 @@ $(TEST_TARGETS): export MOL_INSTANCE_NAME = ansible-add_to_config_file-$(MOL_DIS
 $(TEST_TARGETS):
 	@env | fgrep MOL_
 	@echo "Running for distro: $(MOL_DISTRO)"
-	uv run molecule test --all
+	uv run --locked molecule test --all
 # During development, prevent the container from being destroyed up on test failure
-#	uv run molecule destroy; \
-#		uv run molecule test --all --destroy=never
+#	uv run --locked molecule destroy; \
+#		uv run --locked molecule test --all --destroy=never
 
 ## Run all tests against the default distro
 # If local, make sure TAILSCALE_CI_KEY env var is set.
 # This is automatically populated in a GitHub Codespace.
 .PHONY: test-all
 test-all:
-	uv run molecule test --all
+	uv run --locked molecule test --all
 
 ## Run the default test scenario against the default distro
 .PHONY: test-default
 test-default:
-	uv run molecule test --scenario-name default
+	uv run --locked molecule test --scenario-name default

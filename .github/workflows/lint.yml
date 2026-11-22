@@ -59,7 +59,7 @@ jobs:
 
       - name: Set up pre-commit
         if: env.changed_all == 'true' || steps.changes.outputs.all == 'true'
-        run: uv run --no-build pre-commit install --install-hooks
+        run: uv run --locked --no-build pre-commit install --install-hooks
 
       - name: Get listing of changed Ansible files
         id: ansible-files
@@ -80,7 +80,7 @@ jobs:
 
       - name: Run pre-commit on all ansible files
         if: env.changed_all == 'true'
-        run: uv run --no-build pre-commit run --all-files
+        run: uv run --locked --no-build pre-commit run --all-files
 
       - name: Run pre-commit on changed ansible files
         if: env.changed_all != 'true' && steps.changes.outputs.ansible == 'true'
@@ -88,7 +88,7 @@ jobs:
           # Run pre-commit to lint and format check files that were changed (but not deleted) compared to master.
           # XXX: there is a very small chance that it'll expand to exceed Linux's limits
           #      `getconf ARG_MAX` - max # bytes of args + environ for exec()
-          uv run --no-build pre-commit run --files ${{ steps.ansible-files.outputs.all_files }}
+          uv run --locked --no-build pre-commit run --files ${{ steps.ansible-files.outputs.all_files }}
 
       - name: Get listing of changed GitHub Action files
         id: action-files
@@ -109,7 +109,7 @@ jobs:
 
       - name: Run actionlint on all GitHub Action files
         if: env.changed_all == 'true'
-        run: uv run --no-build pre-commit run actionlint --all-files
+        run: uv run --locked --no-build pre-commit run actionlint --all-files
 
       - name: Run actionlint on changed GitHub Action files
         if: env.changed_all != 'true' && steps.changes.outputs.github_actions == 'true'
@@ -117,4 +117,4 @@ jobs:
           # Run pre-commit to lint and format check files that were changed (but not deleted) compared to master.
           # XXX: there is a very small chance that it'll expand to exceed Linux's limits
           #      `getconf ARG_MAX` - max # bytes of args + environ for exec()
-          uv run --no-build pre-commit run actionlint --files ${{ steps.action-files.outputs.all_files }}
+          uv run --locked --no-build pre-commit run actionlint --files ${{ steps.action-files.outputs.all_files }}

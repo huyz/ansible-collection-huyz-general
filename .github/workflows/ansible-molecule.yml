@@ -97,4 +97,4 @@ jobs:
           MOL_IMAGE: ${{ matrix.image }}
         run: >
           cd roles/${{ matrix.role }} &&
-          uv run molecule test
+          uv run --locked molecule test
