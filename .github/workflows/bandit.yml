@@ -33,7 +33,7 @@ jobs:
 
     # 2026-11-21 Per https://github.com/PyCQA/bandit-action/issues/48, we can't run on latest Ubuntu (26.04?)
     #runs-on: ubuntu-latest
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
 
     steps:
       - name: Perform Bandit Analysis
