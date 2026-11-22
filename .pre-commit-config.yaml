@@ -3,7 +3,7 @@
 #exclude: .*/OFF/.*
 
 default_language_version:
-  python: python3.13
+  python: python3.14
 
 default_install_hook_types:
   - pre-commit
@@ -61,7 +61,7 @@ repos:
       - id: ansible-lint
         # 2026-05-04 This was the key to resolving the python mismatch in CI;
         #   `default_language_version` did not suffice.
-        language_version: python3.13
+        language_version: python3.14
         # galaxy.yml uses manifest, which means we need the `distlib` dependency.
         additional_dependencies: [distlib]
         files: \.(yaml|yml)$
