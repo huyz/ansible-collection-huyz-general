@@ -35,19 +35,20 @@ jobs:
           fetch-depth: 1
 
       - name: Install dependency manager
-        run: pipx install poetry
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
 
       - name: Set up Python 3.x
         id: setup-python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: '3.13.11'   # avoid warning in logs
-          cache: 'poetry'
 
       - name: Install packages
-        run: |
-          poetry config --local installer.only-binary :all:
-          poetry install --no-interaction --with dev
+        env:
+          UV_ONLY_BINARY: ":all:"
+        run: uv sync --all-groups --locked
 
       - name: Check for changes in relevant files
         id: changes
@@ -58,9 +59,7 @@ jobs:
 
       - name: Set up pre-commit
         if: env.changed_all == 'true' || steps.changes.outputs.all == 'true'
-        run: |
-          poetry config --local installer.only-binary :all:
-          poetry run pre-commit install --install-hooks
+        run: uv run pre-commit install --install-hooks
 
       - name: Get listing of changed Ansible files
         id: ansible-files
@@ -81,8 +80,7 @@ jobs:
 
       - name: Run pre-commit on all ansible files
         if: env.changed_all == 'true'
-        run: |
-          poetry run pre-commit run --all-files
+        run: uv run pre-commit run --all-files
 
       - name: Run pre-commit on changed ansible files
         if: env.changed_all != 'true' && steps.changes.outputs.ansible == 'true'
@@ -90,7 +88,7 @@ jobs:
           # Run pre-commit to lint and format check files that were changed (but not deleted) compared to master.
           # XXX: there is a very small chance that it'll expand to exceed Linux's limits
           #      `getconf ARG_MAX` - max # bytes of args + environ for exec()
-          poetry run pre-commit run --files ${{ steps.ansible-files.outputs.all_files }}
+          uv run pre-commit run --files ${{ steps.ansible-files.outputs.all_files }}
 
       - name: Get listing of changed GitHub Action files
         id: action-files
@@ -111,8 +109,7 @@ jobs:
 
       - name: Run actionlint on all GitHub Action files
         if: env.changed_all == 'true'
-        run: |
-          poetry run pre-commit run actionlint --all-files
+        run: uv run pre-commit run actionlint --all-files
 
       - name: Run actionlint on changed GitHub Action files
         if: env.changed_all != 'true' && steps.changes.outputs.github_actions == 'true'
@@ -120,4 +117,4 @@ jobs:
           # Run pre-commit to lint and format check files that were changed (but not deleted) compared to master.
           # XXX: there is a very small chance that it'll expand to exceed Linux's limits
           #      `getconf ARG_MAX` - max # bytes of args + environ for exec()
-          poetry run pre-commit run actionlint --files ${{ steps.action-files.outputs.all_files }}
+          uv run pre-commit run actionlint --files ${{ steps.action-files.outputs.all_files }}

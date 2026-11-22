@@ -38,9 +38,11 @@ Roles:
 
 ### Initializing
 
-1. Set `ANSIBLE_GALAXY_API_KEY` in `.env`
+1. Install [uv](https://docs.astral.sh/uv/) and direnv 2.38.0 or newer.
 
-1. Run
+1. Set `ANSIBLE_GALAXY_API_KEY` in `.env`.
+
+1. Allow direnv to create the `.venv` and install the locked dependencies:
 
     ```shell
     direnv allow

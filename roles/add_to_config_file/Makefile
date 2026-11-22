@@ -14,7 +14,7 @@ MOL_DISTROS := $(DEFAULT_MOL_DISTRO)
 
 
 MOL_DRIVER := docker
-VENV_NAME := venv
+VENV_NAME := ../../.venv
 INSTALL_TIMESTAMP := $(VENV_NAME)/.timestamp
 
 ##############################################################################
@@ -34,20 +34,21 @@ all: lint test
 ##############################################################################
 # Install targets
 
-# Install Python 3.11 first
+# Install uv first
 .PHONY: install
 install:
-	poetry install
-	poetry run pre-commit install --install-hooks
+	uv sync --all-groups
+	uv run pre-commit install --install-hooks
 
 .PHONY: clean
 clean:
-	poetry env remove
+	rm -rf $(VENV_NAME)
 
 .PHONY: update
 update:
-	poetry update
-	poetry run pre-commit autoupdate
+	uv lock --upgrade
+	uv sync --all-groups
+	uv run pre-commit autoupdate
 
 
 ##############################################################################
@@ -55,7 +56,7 @@ update:
 
 .PHONY: lint
 lint:
-	poetry run ansible-lint --profile=production
+	uv run ansible-lint --profile=production
 
 ##############################################################################
 # Molecule targets (all for the default distro)
@@ -63,27 +64,27 @@ lint:
 .PHONY: create
 create:
 	@echo "Running for distro: $(MOL_DISTRO)"
-	poetry run molecule create
+	uv run molecule create
 
 .PHONY: converge
 converge:
 	@echo "Running for distro: $(MOL_DISTRO)"
-	poetry run molecule converge
+	uv run molecule converge
 
 .PHONY: verify
 verify:
 	@echo "Running for distro: $(MOL_DISTRO)"
-	poetry run molecule verify
+	uv run molecule verify
 
 .PHONY: login
 login:
 	@echo "Running for distro: $(MOL_DISTRO)"
-	poetry run molecule login
+	uv run molecule login
 
 .PHONY: destroy
 destroy:
 	@echo "Running for distro: $(MOL_DISTRO)"
-	poetry run molecule destroy
+	uv run molecule destroy
 
 ##############################################################################
 # Test targets
@@ -106,19 +107,19 @@ $(TEST_TARGETS): export MOL_INSTANCE_NAME = ansible-add_to_config_file-$(MOL_DIS
 $(TEST_TARGETS):
 	@env | fgrep MOL_
 	@echo "Running for distro: $(MOL_DISTRO)"
-	poetry run molecule test --all
+	uv run molecule test --all
 # During development, prevent the container from being destroyed up on test failure
-#	poetry run molecule destroy; \
-#		poetry run molecule test --all --destroy=never
+#	uv run molecule destroy; \
+#		uv run molecule test --all --destroy=never
 
 ## Run all tests against the default distro
 # If local, make sure TAILSCALE_CI_KEY env var is set.
 # This is automatically populated in a GitHub Codespace.
 .PHONY: test-all
 test-all:
-	poetry run molecule test --all
+	uv run molecule test --all
 
 ## Run the default test scenario against the default distro
 .PHONY: test-default
 test-default:
-	poetry run molecule test --scenario-name default
+	uv run molecule test --scenario-name default

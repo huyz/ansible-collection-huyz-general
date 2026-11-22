@@ -77,18 +77,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install poetry
-        run: pipx install poetry
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
 
       - name: Set up Python 3.x
         id: setup-python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: '3.13.11'   # avoid warning in logs
-          cache: 'poetry'
 
-      - name: Poetry install packages
-        run: poetry install --no-interaction
+      - name: Install packages
+        run: uv sync --locked
 
       - name: Run Ansible Molecule
         id: molecule
@@ -96,4 +97,4 @@ jobs:
           MOL_IMAGE: ${{ matrix.image }}
         run: >
           cd roles/${{ matrix.role }} &&
-          poetry run molecule test
+          uv run molecule test
