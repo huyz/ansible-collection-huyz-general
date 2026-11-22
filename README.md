@@ -14,6 +14,8 @@
 [![SonarCloud](https://github.com/huyz/ansible-collection-huyz-general/actions/workflows/sonarcloud.yml/badge.svg)](https://github.com/huyz/ansible-collection-huyz-general/actions/workflows/sonarcloud.yml)
 [![Dependency Review](https://github.com/huyz/ansible-collection-huyz-general/actions/workflows/dependency-review.yml/badge.svg)](https://github.com/huyz/ansible-collection-huyz-general/actions/workflows/dependency-review.yml)
 [![Dependabot Updates](https://github.com/huyz/ansible-collection-huyz-general/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/huyz/ansible-collection-huyz-general/actions/workflows/dependabot/dependabot-updates)
+[![renovate](https://img.shields.io/badge/renovate-enabled-%231A1F6C?logo=renovatebot)](https://developer.mend.io/github/huyz/ansible-collection-huyz-general)
+
 
 This Ansible collection contains roles for general use.
 
