@@ -1,0 +1,4 @@
+release_summary: |
+  | Release Date: 2026-11-21
+  | Migrate development tooling from Poetry to uv
+  | Improve local Molecule support for Docker Desktop

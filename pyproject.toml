@@ -1,6 +1,6 @@
 [project]
 name = "huyz.general"
-version = "1.1.2"
+version = "1.1.5"
 description = "Ansible collection of roles for general use"
 authors = [{ name = "huyz" }]
 license = "MIT"
@@ -14,15 +14,11 @@ dependencies = [
 
 [dependency-groups]
 dev = [
-    "antsibull-changelog>=0.34.0,<0.35.0",
+    "antsibull-changelog>=0.37.0,<0.38.0",
     "pre-commit>=4.7.0,<5.0.0",
-    # Avoid the dumb, irrelevant ansible-lint error
-    #   https://github.com/ansible/ansible-lint/discussions/2820
-    "ansible-lint>=25.5.0,<26.0.0; platform_system != 'Windows'",
-    # molecule >= 5.0.1 to avoid ansible-compat issue with 4.x
-    #   https://github.com/ansible-community/molecule/issues/3903
-    "molecule>=25.12.0,<26.0.0",
-    "molecule-plugins[docker]>=25.8.12,<26.0.0",
+    "ansible-lint>=26.0.0,<27.0.0; platform_system != 'Windows'",
+    "molecule>=26.0.0,<27.0.0",
+    "molecule-plugins[docker]>=26.0.0,<27.0.0",
     "pytest-testinfra>=10.1.1,<11.0.0",
     "pytest-subtests>=0.15.0,<0.16.0",
 ]

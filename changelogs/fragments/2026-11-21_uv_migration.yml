@@ -1,0 +1,5 @@
+minor_changes:
+  - Migrate project dependency management from Poetry to uv and refresh development dependency ranges.
+
+bugfixes:
+  - Make local Molecule runs use the active Docker context instead of assuming `/var/run/docker.sock`.

@@ -130,3 +130,22 @@ releases:
     - 2025-09-23_prompt_password_fix_omit_placeholder.yml
     - 2025-09-23_v1.1.4_summary.yml
     release_date: '2025-09-23'
+  1.1.5:
+    changes:
+      bugfixes:
+      - Make local Molecule runs use the active Docker context instead of assuming
+        `/var/run/docker.sock`.
+      minor_changes:
+      - Migrate project dependency management from Poetry to uv and refresh development
+        dependency ranges.
+      release_summary: '| Release Date: 2026-11-21
+
+        | Migrate development tooling from Poetry to uv
+
+        | Improve local Molecule support for Docker Desktop
+
+        '
+    fragments:
+    - 2026-11-21_uv_migration.yml
+    - 2026-11-21_v1.1.5_summary.yml
+    release_date: '2026-11-21'

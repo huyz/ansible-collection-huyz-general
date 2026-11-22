@@ -4,6 +4,26 @@ huyz.general Release Notes
 
 .. contents:: Topics
 
+v1.1.5
+======
+
+Release Summary
+---------------
+
+| Release Date: 2026-11-21
+| Migrate development tooling from Poetry to uv
+| Improve local Molecule support for Docker Desktop
+
+Minor Changes
+-------------
+
+- Migrate project dependency management from Poetry to uv and refresh development dependency ranges.
+
+Bugfixes
+--------
+
+- Make local Molecule runs use the active Docker context instead of assuming `/var/run/docker.sock`.
+
 v1.1.4
 ======
 
