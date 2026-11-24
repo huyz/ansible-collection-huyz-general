@@ -50,7 +50,7 @@ jobs:
           fetch-depth: 1
 
       - name: Run Snyk to check configuration files for security issues
-        uses: snyk/actions/python@master
+        uses: snyk/actions/python@11b673cfb4b0dc0d860a1323caa199d54950dcce # master
         # Snyk can be used to break the build when it detects security issues.
         # In this case we want to upload the issues to GitHub Code Scanning
         continue-on-error: true
