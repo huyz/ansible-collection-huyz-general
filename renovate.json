@@ -5,7 +5,7 @@
   ],
   "packageRules": [
     {
-      "matchPackageNames": ["python"],
+      "matchPackageNames": ["python", "actions/python-versions"],
       "allowedVersions": "<3.15.0"
     }
   ]
